@@ -1,4 +1,4 @@
-README - Updated 8:18 PM 4/9/2014
+﻿README - Updated 8:18 PM 4/9/2014
 
 This github repository is for LLT, or Local Laser Tag.
 
@@ -8,3 +8,5 @@ Inside of each folder should be the exact folder and file composition that you s
 Please comment your code thoroughly so it can easily be comprehended by others. 
 
 ok testing
+edited on pc
+something here
