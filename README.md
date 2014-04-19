@@ -13,9 +13,7 @@ Please comment your code thoroughly so it can easily be comprehended by others.
 
 
 --------------------------------------------------------------------------------------
-Instructions for Eclipes:
-
-To start editing repository files in eclipes
+Instructions to start editing repository files in eclipes:
 
 1. Open eclipes
 2. File>Import
@@ -25,6 +23,6 @@ To start editing repository files in eclipes
 6. Click FInish
 7. Edit files
 8. Save.
-9. Commit to GitHub
+9. Commit To GitHub
 --------------------------------------------------------------------------------------
 
