@@ -1,4 +1,4 @@
-README - Updated 8:18 PM 04/21/2014
+﻿README - Updated 8:18 PM 04/21/2014
 
 
 This github repository is for LLT, or Local Laser Tag.
@@ -17,14 +17,12 @@ Instructions to start editing repository files in eclipes:
 1. Open eclipes
 2. File>Import
 3. Andriod>Exsiting Andriod Code Into Workspace
-4. Click Browse and navigate to */GitHub/LLT/LocalLazorTag
+4. Click Browse and navigate to */GitHub/LLT/LocalLazorTag COMBINED
 5. Click Okay
 6. Click FInish
 7. Edit files
 8. Save.
 9. Commit To GitHub
-10. pl.ololo
-
 
 --------------------------------------------------------------------------------------
 
