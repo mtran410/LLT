@@ -3,6 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -10,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/txtTeamName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Team Name"
@@ -19,7 +20,7 @@
     <LinearLayout
         android:id="@+id/myLay1"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="120dp"
         android:orientation="vertical" >
     </LinearLayout>
 
@@ -28,42 +29,208 @@
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
          android:text="Team Mates"
-         android:textSize="20sp" />
+         android:textSize="25sp" />
 
     <LinearLayout
         android:id="@+id/myLay2"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="70dp"
         android:orientation="vertical" >
+
+       
+
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/myLay3"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="70dp"
         android:orientation="vertical" >
+
+       
 
     </LinearLayout>
     <LinearLayout
         android:id="@+id/myLay4"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="70dp"
         android:orientation="vertical" >
 
     </LinearLayout>
     <LinearLayout
         android:id="@+id/myLay5"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="70dp"
         android:orientation="vertical" >
 
     </LinearLayout>
     <LinearLayout
         android:id="@+id/myLay6"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="70dp"
         android:orientation="vertical" >
 
     </LinearLayout>
+     <LinearLayout
+        android:id="@+id/myLay7"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+   
+   
     
+        <TextView
+            android:id="@+id/msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" >  
+        </TextView>
+          <TextView
+            android:id="@+id/msg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+          <TextView
+            android:id="@+id/msg3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" >
+
+           
+        </TextView>
+          <TextView
+            android:id="@+id/msg4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" >
+        </TextView>
+          <TextView
+            android:id="@+id/msg5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+          <TextView
+            android:id="@+id/msg6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+        
+          
+        <TextView
+            android:id="@+id/d1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" >  
+        </TextView>
+          <TextView
+            android:id="@+id/d2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+          <TextView
+            android:id="@+id/d3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" >
+        </TextView>
+          <TextView
+            android:id="@+id/d4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" >
+        </TextView>
+          <TextView
+            android:id="@+id/d5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+          <TextView
+            android:id="@+id/d6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+    
+   		 <TextView
+            android:id="@+id/p1Image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/avatar" >
+           </TextView>
+         <TextView
+            android:id="@+id/p2Image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/avatar" >
+           </TextView>
+          <TextView
+            android:id="@+id/p3Image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/avatar" >
+           </TextView>
+          <TextView
+            android:id="@+id/p4Image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/avatar" >
+           </TextView>
+         <TextView
+            android:id="@+id/p5Image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/avatar" >
+           </TextView>
+         <TextView
+            android:id="@+id/p6Image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/avatar" >
+           </TextView>
+          <TextView
+            android:id="@+id/h1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+        <TextView
+            android:id="@+id/h2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+        <TextView
+            android:id="@+id/h3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+        <TextView
+            android:id="@+id/h4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+        <TextView
+            android:id="@+id/h5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+        <TextView
+            android:id="@+id/h6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" > 
+        </TextView>
+        
+         
+     
 </LinearLayout>

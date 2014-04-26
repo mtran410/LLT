@@ -6,38 +6,39 @@
 
     <LinearLayout
         android:layout_width="136dp"
-        android:layout_height="120dp"
+        android:layout_height="60dp"
         android:layout_weight="0.23" >
 
         <TextView
-            android:id="@+id/avatar"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:id="@+id/avatar6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:src="@drawable/avatar"
             android:textColor="#ff0000"
-            android:textSize="60sp"
+            android:textSize="50sp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/txtPlayerName"
+                android:id="@+id/txtPlayerName6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Player Name"
-                android:textSize="30sp" />
+                android:textSize="15sp" />
 
             <Button
-                android:id="@+id/healthBar"
+                android:id="@+id/healthBar6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 android:layout_alignParentLeft = "true"
-               	android:pivotX="5%"
-               	android:pivotY="50%"
+                android:layout_alignParentLeft="true"
                 android:background="#ff0000"
+                android:minHeight="5dp"
+                android:pivotX="5%"
+                android:pivotY="50%"
                 android:text="Health Bar" />
 
             <LinearLayout
@@ -45,20 +46,20 @@
                 android:layout_height="match_parent" >
 
                 <TextView
-                    android:id="@+id/txtDeath"
+                    android:id="@+id/txtDeath6"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="bottom"
                     android:text="Death  "
-                    android:textSize="25sp" />
+                    android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/death"
+                    android:id="@+id/death6"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="0.30"
                     android:text="0"
-                    android:textSize="25sp" />
+                    android:textSize="10sp" />
 
             </LinearLayout>
 

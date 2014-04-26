@@ -34,7 +34,7 @@ public class TimerActivity extends Activity implements OnClickListener {
 	 public void onCreate(Bundle savedInstanceState) {
 	  super.onCreate(savedInstanceState);
 	  setContentView(R.layout.activity_timer);
-	  startB = (Button) this.findViewById(R.id.button);//start button
+	  startB = (Button) this.findViewById(R.id.startB);//start button
 	  startB.setOnClickListener(this);//listener for start button
 	  text = (TextView) this.findViewById(R.id.timer);//timer display
 	  countDownTimer = new MyCountDownTimer(startTime, interval);//instance of class 
@@ -73,7 +73,7 @@ public class TimerActivity extends Activity implements OnClickListener {
 	  @Override
 	  public void onTick(long millisUntilFinished) {//for each tick of second
 		  if( millisUntilFinished / 1000 < 11){//when reach ten start sound
-			  text.setTextSize(100);
+			  text.setTextSize(40);
 			  text.setText("Get Ready");
 			  myMedia.start();//start sound
 			  
