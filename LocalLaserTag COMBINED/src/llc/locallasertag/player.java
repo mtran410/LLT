@@ -18,7 +18,7 @@ import android.hardware.SensorEventListener;
  * avatar, current score, user name, player id, IGN, and so forth
  */
 
-public class player extends Activity {// implements ActionListener{
+public class Player extends Activity {// implements ActionListener{
 
    int avatarNum = 1; // for avatar integers 1-35 correspond to a preloaded image, integer 0 corresponds the user had uploaded his/her own image
    //Image avatar = new IconImage();
@@ -32,7 +32,7 @@ public class player extends Activity {// implements ActionListener{
    int MINIMUM_LIGHT = 400; //amount of light needed to register a hit
    Long start = 0L; //start = system nano time when player sensor went above minimum light
 
-   public player() { // creates player from saved file OR a default player if file not found
+   public Player() { // creates player from saved file OR a default player if file not found
       if (!loadPlayer()) { //if load player fails, create default player
          //id = random string?
          IGN = "NEWBIE";
@@ -44,7 +44,7 @@ public class player extends Activity {// implements ActionListener{
       }
    }
 
-   public player(String IGN, int avatarNum) { // player when created in edit menu -- parameters should be IGN, icon, id?
+   public Player(String IGN, int avatarNum) { // player when created in edit menu -- parameters should be IGN, icon, id?
       this.avatarNum = avatarNum;
       this.IGN = IGN;
       //used to create a player from EDIT menu
@@ -131,11 +131,11 @@ public class player extends Activity {// implements ActionListener{
 
    /* TODO
    public image/drawable getAvatar(){
-   	if (usingPreLoadedAvatar()){ //returns preploaded image
-   		return 
-   	} else //returns user uplaoded image
-   	 return 
-   		
+      if (usingPreLoadedAvatar()){ //returns preploaded image
+         return 
+      } else //returns user uplaoded image
+       return 
+         
    }
    */
 

@@ -1,17 +1,26 @@
 package llc.locallasertag;
 
-public class game {
+public class Game {
    int type = 0; //type 0 = tdm, 1 = ffa
    boolean started = false;
    int lengthInSec = 600; // game ends if time runs out
+   String name, typeAsString;
+   Player creator;
 
-   public game() {
+   public Game() {
       lengthInSec = 600;
       type = 0;
    }
 
-   public game(int t, int minutes) {
+   public Game(String name, int t, int minutes, Player host) {
       type = t;
+      switch (type) {
+         case 0:
+            typeAsString = "Team Death Match";
+         case 1:
+            typeAsString = "Free For All";
+      }
+      creator = host;
       lengthInSec = minutes * 60;
    }
 
@@ -20,14 +29,7 @@ public class game {
    }
 
    public String type() {
-      switch (type) {
-         case 0:
-            return "Team Death Match";
-         case 1:
-            return "Free For All";
-      }
-
-      return "ERROR";
+      return typeAsString;
    }
 
    public void start() {
