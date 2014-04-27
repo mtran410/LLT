@@ -4,10 +4,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Timer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
 /*
  * Player Class
@@ -16,7 +18,7 @@ import android.content.Context;
  * avatar, current score, user name, player id, IGN, and so forth
  */
 
-public class player extends Activity {
+public class Player extends Activity {// implements ActionListener{
 
    int avatarNum = 1; // for avatar integers 1-35 correspond to a preloaded image, integer 0 corresponds the user had uploaded his/her own image
    //Image avatar = new IconImage();
@@ -28,9 +30,9 @@ public class player extends Activity {
    int NUMBER_OF_AVATARS = 35;
    int MILLI_FOR_DAMAGE = 250; //number of milliseconds needed of light above MINIMUM_LIGHT to decrease health by 1% 
    int MINIMUM_LIGHT = 400; //amount of light needed to register a hit
-   Timer timer = new Timer();
+   Long start = 0L; //start = system nano time when player sensor went above minimum light
 
-   public player() { // creates player from saved file OR a default player if file not found
+   public Player() { // creates player from saved file OR a default player if file not found
       if (!loadPlayer()) { //if load player fails, create default player
          //id = random string?
          IGN = "NEWBIE";
@@ -38,10 +40,11 @@ public class player extends Activity {
          wins = 0;
          loses = 0;
          savePlayerData();
+         start = 0L;
       }
    }
 
-   public player(String IGN, int avatarNum) { // player when created in edit menu -- parameters should be IGN, icon, id?
+   public Player(String IGN, int avatarNum) { // player when created in edit menu -- parameters should be IGN, icon, id?
       this.avatarNum = avatarNum;
       this.IGN = IGN;
       //used to create a player from EDIT menu
@@ -128,11 +131,11 @@ public class player extends Activity {
 
    /* TODO
    public image/drawable getAvatar(){
-   	if (usingPreLoadedAvatar()){ //returns preploaded image
-   		return 
-   	} else //returns user uplaoded image
-   	 return 
-   		
+      if (usingPreLoadedAvatar()){ //returns preploaded image
+         return 
+      } else //returns user uplaoded image
+       return 
+         
    }
    */
 
@@ -169,35 +172,28 @@ public class player extends Activity {
       return (int) ((double) wins / (wins + loses)) * 100;
    }
 
-   /*
-   ActionListener taskPerformer = new ActionListener() {
-      public void actionPerformed(ActionEvent evt) {
-          loseHealth(1);
-      }
-   };
-   new Timer(delay, taskPerformer).start();
-   
-   
-   private final SensorEventListener LightSensorListener = new SensorEventListener(){
+   private final SensorEventListener LightSensorListener = new SensorEventListener() {
       @Override
       public void onAccuracyChanged(Sensor sensor, int accuracy) {
-       // TODO Auto-generated method stub
+         // TODO Auto-generated method stub
       }
 
       @Override
       public void onSensorChanged(SensorEvent event) {
-       if(event.sensor.getType() == Sensor.TYPE_LIGHT)
-           textLIGHT_reading.setText("LIGHT: " + event.values[0]);
-       if(event.values[0] > MINIMUM_LIGHT){
-        
-          
-          
-          
-       }
-          
+         //if (event.sensor.getType() == Sensor.TYPE_LIGHT)
+         //   timer.start();
+
+         if (event.values[0] > MINIMUM_LIGHT) { //player is assumed to be being hit with light
+            if (start == 0L) //if time hasnt started counting
+               start = System.nanoTime(); //start timer
+         } else {
+            if (start != 0L) { //if timer has started then...
+               Long elasped = start - System.nanoTime();
+               loseHealth((int) (elasped / 1000) / MILLI_FOR_DAMAGE); //have player lose health compared to how long light was above threshold
+               start = 0L; //reset start time
+            }
+         }
       }
    };
-   
-   */
 
 }
