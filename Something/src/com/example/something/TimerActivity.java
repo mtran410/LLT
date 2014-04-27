@@ -25,7 +25,7 @@ public class TimerActivity extends Activity implements OnClickListener {
 	 private boolean timerHasStarted = false;//start or not
 	 private Button startB;//button 
 	 public TextView text;//text box
-	 private final long seconds = 15;//second to count down from
+	 private final long seconds = 5;//second to count down from
 	 private final long startTime = seconds * 1000;
 	 private final long interval = 1 * 1000;
 	 public MediaPlayer myMedia;//play sound
@@ -66,7 +66,7 @@ public class TimerActivity extends Activity implements OnClickListener {
 	  @Override
 	  public void onFinish() {//when finish display
 	   text.setText("Battle On!");
-	   startActivity(new Intent(TimerActivity.this, PlayerPage.class));//go to next page when 10 second left
+	   startActivity(new Intent(TimerActivity.this, PlayingPage.class));//go to next page when 10 second left
 	    
 	  }
 	 
@@ -75,7 +75,7 @@ public class TimerActivity extends Activity implements OnClickListener {
 		  if( millisUntilFinished / 1000 < 11){//when reach ten start sound
 			  text.setTextSize(40);
 			  text.setText("Get Ready");
-			  myMedia.start();//start sound
+			 // myMedia.start();//start sound
 			  
 		  }
 		  else{

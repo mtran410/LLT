@@ -3,11 +3,10 @@
     package="com.example.something"
     android:versionCode="1"
     android:versionName="1.0" >
-	<uses-permission android:name="android.permission.VIBRATE"/>
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-
+	
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -25,6 +24,7 @@
         </activity>
         <activity android:name="PlayerPage"></activity>
         <activity android:name="PlayerFragment"></activity>
+        <activity android:name="PlayingPage"></activity>
     </application>
 
 </manifest>
