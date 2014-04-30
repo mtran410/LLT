@@ -19,7 +19,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int buttonBarStyle=0x7f010000;
     }
     public static final class color {
-        public static final int black_overlay=0x7f040000;
+        public static final int black_overlay=0x7f050000;
     }
     public static final class drawable {
         public static final int a1=0x7f020000;
@@ -57,24 +57,89 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int a7=0x7f020020;
         public static final int a8=0x7f020021;
         public static final int a9=0x7f020022;
-        public static final int ic_launcher=0x7f020023;
+        public static final int avatar=0x7f020023;
+        public static final int avatar2=0x7f020024;
+        public static final int avatar7=0x7f020025;
+        public static final int healthbar=0x7f020026;
+        public static final int ic_launcher=0x7f020027;
+        public static final int ic_launcher_llt=0x7f020028;
+        public static final int logo6=0x7f020029;
+        public static final int pic1=0x7f02002a;
+        public static final int pic2=0x7f02002b;
+        public static final int pic3=0x7f02002c;
+        public static final int pic4=0x7f02002d;
+        public static final int pic5=0x7f02002e;
+        public static final int pic8=0x7f02002f;
     }
     public static final class id {
-        public static final int container=0x7f070001;
-        public static final int gameList=0x7f070000;
-        public static final int settings=0x7f070004;
-        public static final int start=0x7f070003;
-        public static final int textView1=0x7f070002;
+        public static final int L1=0x7f08000b;
+        public static final int L2=0x7f080012;
+        public static final int L3=0x7f080018;
+        public static final int L4=0x7f08001e;
+        public static final int L5=0x7f080024;
+        public static final int L6=0x7f08002a;
+        public static final int Main=0x7f080009;
+        public static final int avatar1=0x7f08000c;
+        public static final int avatar2=0x7f080013;
+        public static final int avatar3=0x7f080019;
+        public static final int avatar4=0x7f08001f;
+        public static final int avatar5=0x7f080025;
+        public static final int avatar6=0x7f08002b;
+        public static final int bar2=0x7f080014;
+        public static final int bar3=0x7f08001a;
+        public static final int bar4=0x7f080020;
+        public static final int bar5=0x7f080026;
+        public static final int bar6=0x7f08002c;
+        public static final int changeTime=0x7f080007;
+        public static final int container=0x7f080001;
+        public static final int death1=0x7f080010;
+        public static final int death2=0x7f080017;
+        public static final int death3=0x7f08001d;
+        public static final int death4=0x7f080023;
+        public static final int death5=0x7f080029;
+        public static final int death6=0x7f08002f;
+        public static final int gameList=0x7f080000;
+        public static final int healthBar1=0x7f08000e;
+        public static final int newTime=0x7f080008;
+        public static final int settings=0x7f080004;
+        public static final int start=0x7f080003;
+        public static final int startB=0x7f080005;
+        public static final int textView1=0x7f080002;
+        public static final int textView3=0x7f080031;
+        public static final int textView5=0x7f080011;
+        public static final int timer=0x7f080006;
+        public static final int txtDeath1=0x7f08000f;
+        public static final int txtDeath2=0x7f080016;
+        public static final int txtDeath3=0x7f08001c;
+        public static final int txtDeath4=0x7f080022;
+        public static final int txtDeath5=0x7f080028;
+        public static final int txtDeath6=0x7f08002e;
+        public static final int txtLoss=0x7f080032;
+        public static final int txtPlayerName1=0x7f08000d;
+        public static final int txtPlayerName2=0x7f080015;
+        public static final int txtPlayerName3=0x7f08001b;
+        public static final int txtPlayerName4=0x7f080021;
+        public static final int txtPlayerName5=0x7f080027;
+        public static final int txtPlayerName6=0x7f08002d;
+        public static final int txtTeamName1=0x7f08000a;
+        public static final int txtWin=0x7f080030;
     }
     public static final class layout {
         public static final int activity_lobby=0x7f030000;
         public static final int activity_main=0x7f030001;
-        public static final int app_settings=0x7f030002;
+        public static final int activity_timer=0x7f030002;
+        public static final int app_settings=0x7f030003;
+        public static final int playingpage=0x7f030004;
+    }
+    public static final class raw {
+        public static final int count=0x7f040000;
+        public static final int count3=0x7f040001;
+        public static final int count5=0x7f040002;
     }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int dummy_button=0x7f050001;
-        public static final int dummy_content=0x7f050002;
+        public static final int app_name=0x7f060000;
+        public static final int dummy_button=0x7f060001;
+        public static final int dummy_content=0x7f060002;
     }
     public static final class style {
         /** 
@@ -101,15 +166,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
-        public static final int ButtonBar=0x7f060003;
-        public static final int ButtonBarButton=0x7f060004;
-        public static final int FullscreenActionBarStyle=0x7f060005;
-        public static final int FullscreenTheme=0x7f060002;
+        public static final int AppTheme=0x7f070001;
+        public static final int ButtonBar=0x7f070003;
+        public static final int ButtonBarButton=0x7f070004;
+        public static final int FullscreenActionBarStyle=0x7f070005;
+        public static final int FullscreenTheme=0x7f070002;
     }
     public static final class styleable {
         /** 
