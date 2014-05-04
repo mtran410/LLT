@@ -14,8 +14,8 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 //import android.os.Vibrator;
@@ -26,7 +26,7 @@ public class PlayingPage extends Activity {
    private ArrayList<Integer> playerDeath = new ArrayList<Integer>();
    TextView name1, name2, name3, name4, name5, name6, teamName, win, loss;//to change the players name
    TextView death1, death2, death3, death4, death5, death6;//to change the number of death
-   Button health1, health2, health3, health4, health5, health6;//to change the health Bar
+   ProgressBar health1, health2, health3, health4, health5, health6;//to change the health Bar
    LinearLayout l1, l2, l3, l4, l5, l6;
    TextView player1Image, player2Image, player3Image, player4Image, player5Image, player6Image;//to change the image
    ArrayList<Boolean> playerDead = new ArrayList<Boolean>();
@@ -120,8 +120,8 @@ public class PlayingPage extends Activity {
          if (playerDead.get(0) == false) {//if player is still alive then change health if not do nothing
             if (lessHealth < 0.0)
                lessHealth = 0.0;//change change bar to under 0
-            health1.setScaleX(Float.parseFloat(lessHealth.toString()));//change health bar
-            health1.setText(healthFormat.format(lessHealth * 100).toString() + "%");//type percentage health on bar
+            health1.setProgress(lessHealth.intValue());//change health bar
+            //health1.setText(healthFormat.format(lessHealth * 100).toString() + "%");//type percentage health on bar
             if (lessHealth <= 0.0) {//if player die then set to true
                playerDead.set(0, true);
                player1Image.setText(" X"); //put an x on player pic
@@ -137,8 +137,8 @@ public class PlayingPage extends Activity {
          if (playerDead.get(1) == false) {
             if (lessHealth <= 0.0)
                lessHealth = 0.0;
-            health2.setScaleX(Float.parseFloat(lessHealth.toString()));
-            health2.setText(healthFormat.format(lessHealth * 100).toString() + "%");
+            health2.setProgress(lessHealth.intValue());
+            //health2.setText(healthFormat.format(lessHealth * 100).toString() + "%");
             if (lessHealth == 0.0) {
                playerDead.set(1, true);
                player2Image.setText(" X");
@@ -153,8 +153,8 @@ public class PlayingPage extends Activity {
          if (playerDead.get(2) == false) {
             if (lessHealth < 0.0)
                lessHealth = 0.0;
-            health3.setScaleX(Float.parseFloat(lessHealth.toString()));
-            health3.setText(healthFormat.format(lessHealth * 100).toString() + "%");
+            health3.setProgress(lessHealth.intValue());
+            //health3.setText(healthFormat.format(lessHealth * 100).toString() + "%");
             if (lessHealth == 0.0) {
                playerDead.set(2, true);
                player3Image.setText(" X");
@@ -169,8 +169,8 @@ public class PlayingPage extends Activity {
 
             if (lessHealth < 0.0)
                lessHealth = 0.0;
-            health4.setScaleX(Float.parseFloat(lessHealth.toString()));
-            health4.setText(healthFormat.format(lessHealth * 100).toString() + "%");
+            health4.setProgress(lessHealth.intValue());
+            //health4.setText(healthFormat.format(lessHealth * 100).toString() + "%");
             if (lessHealth == 0.0) {
                playerDead.set(3, true);
                player4Image.setText(" X");
@@ -183,9 +183,9 @@ public class PlayingPage extends Activity {
          if (playerDead.get(4) == false) {
             if (lessHealth < 0.0)
                lessHealth = 0.0;
-            health5.setScaleX(Float.parseFloat(lessHealth.toString()));
+            health5.setProgress(lessHealth.intValue());
             //percentHealth = lessHealth*100;
-            health5.setText(healthFormat.format(lessHealth * 100).toString() + "%");
+            //health5.setText(healthFormat.format(lessHealth * 100).toString() + "%");
             if (lessHealth == 0.0) {
                playerDead.set(4, true);
                player5Image.setText(" X");
@@ -199,8 +199,8 @@ public class PlayingPage extends Activity {
          if (playerDead.get(5) == false) {
             if (lessHealth < 0.0)
                lessHealth = 0.0;
-            health6.setScaleX(Float.parseFloat(lessHealth.toString()));
-            health6.setText(healthFormat.format(lessHealth * 100).toString() + "%");
+            health6.setProgress(lessHealth.intValue());
+            //health6.setText(healthFormat.format(lessHealth * 100).toString() + "%");
             if (lessHealth == 0.0) {
                playerDead.set(5, true);
                player6Image.setText(" X");
@@ -292,15 +292,16 @@ public class PlayingPage extends Activity {
       death6 = (TextView) findViewById(R.id.death6);
 
       //assign to actual xml 
-      health1 = (Button) findViewById(R.id.healthBar1);
-      health2 = (Button) findViewById(R.id.bar2);
-      health3 = (Button) findViewById(R.id.bar3);
-      health4 = (Button) findViewById(R.id.bar4);
-      health5 = (Button) findViewById(R.id.bar5);
-      health6 = (Button) findViewById(R.id.bar6);
+      health1 = (ProgressBar) findViewById(R.id.healthBar1);
+      health2 = (ProgressBar) findViewById(R.id.bar2);
+      health3 = (ProgressBar) findViewById(R.id.bar3);
+      health4 = (ProgressBar) findViewById(R.id.bar4);
+      health5 = (ProgressBar) findViewById(R.id.bar5);
+      health6 = (ProgressBar) findViewById(R.id.bar6);
 
       //set the health bar to the right of pic
 
+      /*
       health1.setPivotX(1);
       health2.setPivotX(1);
       health3.setPivotX(1);
@@ -314,6 +315,9 @@ public class PlayingPage extends Activity {
       health4.setLeft(1);
       health5.setLeft(1);
       health6.setLeft(1);
+
+      *
+      */
 
       //create the  image
       player1Image = (TextView) findViewById(R.id.avatar1);

@@ -42,15 +42,17 @@
                 android:textColor="#ffffff"
                 android:textSize="30sp" />
 
-            <Button
+           
+            
+            <ProgressBar
                 android:id="@+id/healthBar1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft = "true"
-               	android:pivotX="5%"
-               	android:pivotY="50%"
+                android:layout_alignParentLeft="true"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
-                android:text="Health Bar" />
+                android:minHeight="10dp"
+           android:text="Health Bar"  />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,16 +113,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <Button
+
+                   <ProgressBar
                 android:id="@+id/bar2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-                android:pivotX="5%"
-                android:pivotY="50%"
-                android:text="Health Bar" />
+           android:text="Health Bar"  />
 
 
             <LinearLayout
@@ -182,16 +184,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <Button
+<ProgressBar
                 android:id="@+id/bar3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-                android:pivotX="5%"
-                android:pivotY="50%"
-                android:text="Health Bar" />
+           android:text="Health Bar"  />
 
 
             <LinearLayout
@@ -253,15 +254,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <Button
-                android:id="@+id/bar4" android:layout_width="match_parent"
+<ProgressBar
+                android:id="@+id/bar4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-                android:pivotX="5%"
-                android:pivotY="50%"
-                android:text="Health Bar" />
+           android:text="Health Bar"  />
 
            <LinearLayout
                 android:layout_width="match_parent"
@@ -322,16 +323,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <Button
+<ProgressBar
                 android:id="@+id/bar5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-                android:pivotX="5%"
-                android:pivotY="50%"
-                android:text="Health Bar" />
+           android:text="Health Bar"  />
 
           <LinearLayout
                 android:layout_width="match_parent"
@@ -393,16 +393,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <Button
+<ProgressBar
                 android:id="@+id/bar6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
+                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-                android:pivotX="5%"
-                android:pivotY="50%"
-                android:text="Health Bar" />
+           android:text="Health Bar"  />
 
 
           <LinearLayout

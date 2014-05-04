@@ -31,7 +31,7 @@ public class TimerActivity extends Activity implements OnClickListener {
       addListenerOnButton();
 
       newTimer = (EditText) findViewById(R.id.newTime);
-      final long seconds = 15;//Long.parseLong(newTimer.getText().toString());
+      final long seconds = 8;//Long.parseLong(newTimer.getText().toString());
       final long startTime = seconds * 1000;
       startB = (Button) this.findViewById(R.id.startB);//start button
       startB.setOnClickListener(this);//listener for start button

@@ -9,8 +9,13 @@ import android.view.View;
 
 public class MainActivity extends Activity {
 
+   //private static MyPlayer user;
+
    @Override
    protected void onCreate(Bundle savedInstanceState) {
+      //user = new MyPlayer();
+      //user.loadPlayer(); //loads the users data into the shared MyPlayer user variable for access throught app
+
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
 

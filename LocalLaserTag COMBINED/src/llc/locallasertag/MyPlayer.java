@@ -51,8 +51,8 @@ public class MyPlayer extends Player {// implements ActionListener{
       savePlayerData();
    }
 
-   private boolean loadPlayer() {
-      //loads player information from file if stored previously 
+   public boolean loadPlayer() {
+      //loads player information from file if stored previously //OR LOADS FROM SERVER?
       //returns true if data was loaded from file into local variables
       FileInputStream fis;
 
