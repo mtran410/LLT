@@ -19,7 +19,7 @@
 				$post_data = json_encode(array('isvalid' => 'true'), JSON_FORCE_OBJECT);
 			
 			}
-					echo $post_data;
+					echo $post_data; 
 		
 		  mysql_close($con);
 		  
