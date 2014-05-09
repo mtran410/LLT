@@ -12,8 +12,7 @@ public class Game {
       type = 0;
    }
 
-   public Game(String name, int t, int minutes, Player host, Team team) {
-      //TODO TEAM...
+   public Game(String name, int t, int minutes, Player host) {
       type = t;
       switch (type) {
          case 0:

@@ -1,10 +1,8 @@
 package llc.locallasertag;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 public class Lobby extends Activity {
 
@@ -24,10 +22,4 @@ public class Lobby extends Activity {
       }
       return super.onOptionsItemSelected(item);
    }
-
-   public void joinGame(View v) {
-      Intent intent = new Intent(this, TimerActivity.class);
-      startActivity(intent);
-   }
-
 }

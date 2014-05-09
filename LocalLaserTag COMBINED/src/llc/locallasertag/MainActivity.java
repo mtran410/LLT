@@ -6,21 +6,26 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
-
-   //private static MyPlayer user;
-
+	Button startButton;
    @Override
    protected void onCreate(Bundle savedInstanceState) {
-      //user = new MyPlayer();
-      //user.loadPlayer(); //loads the users data into the shared MyPlayer user variable for access throught app
-
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
-
+      startButton = (Button)findViewById(R.id.startButton);
+      
+      startButton.setOnClickListener(new OnClickListener() {
+    	  public void onClick(View v){
+    		  startActivity(new Intent(MainActivity.this, GamePage.class));
+    	  }
+      });
    }
-
+   
+  
+  
    @Override
    public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -42,7 +47,7 @@ public class MainActivity extends Activity {
    }
 
    public void gameStart(View v) {
-      Intent intent = new Intent(this, Lobby.class);
+      Intent intent = new Intent(this, TimerActivity.class);
       startActivity(intent);
    }
 
