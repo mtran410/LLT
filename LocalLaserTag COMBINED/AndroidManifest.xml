@@ -38,6 +38,7 @@
         <activity android:name="PlayingPage"></activity>
         <activity android:name="OneForAll"></activity>
         <activity android:name="GamePage"></activity>
+        <activity android:name="CreateGame"></activity>
     </application>
 
 </manifest>

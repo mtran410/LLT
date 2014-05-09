@@ -10,13 +10,19 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-	Button startButton;
+	Button startButton, how;
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
       startButton = (Button)findViewById(R.id.startButton);
+      how = (Button)findViewById(R.id.butHow);
       
+      how.setOnClickListener(new OnClickListener() {
+    	  public void onClick(View v){
+    		  startActivity(new Intent(MainActivity.this, HowToPlay.class));
+    	  }
+      });
       startButton.setOnClickListener(new OnClickListener() {
     	  public void onClick(View v){
     		  startActivity(new Intent(MainActivity.this, GamePage.class));

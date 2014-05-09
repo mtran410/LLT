@@ -17,13 +17,13 @@
         android:layout_marginBottom="15dp"
         android:layout_marginTop="24dp"
         android:minWidth="220dp"
-        android:text="HOW TO PLAY"
+        android:text="HOW TO PLAY/DISCLAIMER"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="15sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/how"
+        android:id="@+id/butHow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/setting"
