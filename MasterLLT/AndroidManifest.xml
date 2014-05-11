@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="llt.locallasertag"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="llt.locallasertag.nongame.SplashScreen"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="llt.locallasertag.game.MainActivity"></activity>
+        <activity android:name="llt.locallasertag.nongame.HowToPlay"
+                  	android:label="How To Play"></activity>
+        <activity android:name="llt.locallasertag.nongame.Setting"
+             		android:label="Settings"></activity>
+        <activity android:name="llt.locallasertag.game.Lobby"
+					android:label="Lobby"></activity>
+        <activity android:name="llt.locallasertag.game.PlayingPage"
+					android:label="Team Deathmatch"></activity>
+        <activity android:name="llt.locallasertag.game.TimerActivity"></activity>
+        <activity android:name="llt.locallasertag.game.OneForAll"
+        			android:label="Free For All"></activity>
+        <activity android:name="llt.locallasertag.game.CreateGame"
+            		android:label="Game Creation"></activity>
+    
+             
+    </application>
+
+</manifest>
