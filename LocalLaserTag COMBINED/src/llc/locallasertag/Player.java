@@ -1,6 +1,15 @@
 package llc.locallasertag;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 import android.app.Activity;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
 /*
  * Player Class
@@ -17,21 +26,71 @@ public class Player extends Activity {// implements ActionListener{
    private String id; //used to identify player server side
    private int health = 100; //is reset to 100 when game begins
    private int wins, loses; //total wins and loses of the player
+   String FILENAME = "player_data";
    int NUMBER_OF_AVATARS = 35;
+   int MILLI_FOR_DAMAGE = 250; //number of milliseconds needed of light above MINIMUM_LIGHT to decrease health by 1% 
+   int MINIMUM_LIGHT = 400; //amount of light needed to register a hit
+   Long start = 0L; //start = system nano time when player sensor went above minimum light
 
    public Player() { // creates player from saved file OR a default player if file not found
-
-      //cannot create player in default constructor 
+      if (!loadPlayer()) { //if load player fails, create default player
+         //id = random string?
+         IGN = "NEWBIE";
+         avatarNum = (int) (Math.random() * (NUMBER_OF_AVATARS - 1)) + 1; //randomizes player an avatar from the preloaded ones
+         wins = 0;
+         loses = 0;
+         savePlayerData();
+         start = 0L;
+      }
    }
 
-   public Player(String id, String IGN, int avatarNum, int health) { // a player, created for each person in lobby when MyPlayer joins a lobby or game
-      this.health = health;
+   public Player(String IGN, int avatarNum) { // player when created in edit menu -- parameters should be IGN, icon, id?
       this.avatarNum = avatarNum;
       this.IGN = IGN;
       //used to create a player from EDIT menu
 
       //if ()
 
+      savePlayerData();
+   }
+
+   private boolean loadPlayer() {
+      //loads player information from file if stored previously 
+      //returns true if data was loaded from file into local variables
+      FileInputStream fis;
+
+      try {
+         fis = openFileInput(FILENAME);
+      } catch (FileNotFoundException e) {
+         return false;
+      }
+
+      //TODO get data from file and store into local variables
+      // ei: IGN = fis.read(....
+
+      return true;
+   }
+
+   public boolean savePlayerData() {
+      //returns true if save was successful
+
+      FileOutputStream fos;
+      String str = "" + id + " " + IGN + " " + wins + " " + loses;
+      try {
+         fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+         //TODO how to save data?
+         fos.write(str.getBytes());
+         fos.close();
+      } catch (FileNotFoundException e) {
+         // TODO create file, then save data?
+         e.printStackTrace();
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+
+      //http://developer.android.com/guide/topics/data/data-storage.html#filesInternal
+
+      return true;
    }
 
    public boolean setHealth(int h) {
@@ -112,5 +171,29 @@ public class Player extends Activity {// implements ActionListener{
    public int getWinPercentage() {
       return (int) ((double) wins / (wins + loses)) * 100;
    }
+
+   private final SensorEventListener LightSensorListener = new SensorEventListener() {
+      @Override
+      public void onAccuracyChanged(Sensor sensor, int accuracy) {
+         // TODO Auto-generated method stub
+      }
+
+      @Override
+      public void onSensorChanged(SensorEvent event) {
+         //if (event.sensor.getType() == Sensor.TYPE_LIGHT)
+         //   timer.start();
+
+         if (event.values[0] > MINIMUM_LIGHT) { //player is assumed to be being hit with light
+            if (start == 0L) //if time hasnt started counting
+               start = System.nanoTime(); //start timer
+         } else {
+            if (start != 0L) { //if timer has started then...
+               Long elasped = start - System.nanoTime();
+               loseHealth((int) (elasped / 1000) / MILLI_FOR_DAMAGE); //have player lose health compared to how long light was above threshold
+               start = 0L; //reset start time
+            }
+         }
+      }
+   };
 
 }
