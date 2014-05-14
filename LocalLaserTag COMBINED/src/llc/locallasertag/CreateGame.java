@@ -11,13 +11,14 @@ import android.widget.Spinner;
 
 public class CreateGame extends Activity {
 	private Spinner gameType, numPlayer;
-	private EditText getGameName;
+	private EditText getGameName, passWord;
 	private Integer numberPlayer;
 	private String gameChoice, gameName;
 	public void onCreate(Bundle savedInstanceState) {
 		  super.onCreate(savedInstanceState);
 		  setContentView(R.layout.creategame);
 		  getGameName=(EditText)findViewById(R.id.txtGameName);
+		  passWord = (EditText)findViewById(R.id.txtPassword);
 		  gameType = (Spinner)findViewById(R.id.chooseGame);
 		  numPlayer = (Spinner)findViewById(R.id.spinNumberPlayer);
 		  

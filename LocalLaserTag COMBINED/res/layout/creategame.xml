@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout1"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:layout_weight="0.44"
         android:text="Create Your Game"
         android:textColor="#000000"
         android:textSize="30sp"
@@ -21,8 +20,6 @@
         android:id="@+id/txtGameName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textView1"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="42dp"
         android:ems="10"
@@ -33,35 +30,38 @@
         android:textStyle="bold" />
 
     <Spinner
-        android:id="@+id/chooseGame"
+        android:id="@+id/spinNumberPlayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/txtGameName"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="30dp"
+        android:entries="@array/numPlayer"
+        android:minHeight="50dp"
+        android:prompt="@string/NumberPlayer" />
+
+    <Spinner
+        android:id="@+id/chooseGame"
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
         android:entries="@array/GameType"
         android:minHeight="50dp"
         android:prompt="@string/Games" />
 
-    <Spinner
-        android:id="@+id/spinNumberPlayer"
+    <EditText
+        android:id="@+id/txtPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/chooseGame"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="37dp"
-        android:entries="@array/numPlayer"
-        android:minHeight="50dp"
-        android:prompt="@string/NumberPlayer" />
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="Password Optional"
+        android:inputType="textPassword"
+        android:textColorHint="#ffcccc" >
+
+        <requestFocus />
+    </EditText>
 
     <Button
         android:id="@+id/txtDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:text="Done" />
 
-</RelativeLayout>
+</LinearLayout>
