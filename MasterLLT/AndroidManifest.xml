@@ -12,7 +12,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme" 
+       >
         <activity
             android:name="llt.locallasertag.nongame.SplashScreen"
             android:label="@string/app_name" >
@@ -25,7 +26,8 @@
         <activity android:name="llt.locallasertag.nongame.HowToPlay"
                   	android:label="How To Play"></activity>
         <activity android:name="llt.locallasertag.nongame.Setting"
-             		android:label="Settings"></activity>
+             		android:label="Settings"
+             		 android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name="llt.locallasertag.game.Lobby"
 					android:label="Lobby"></activity>
         <activity android:name="llt.locallasertag.game.PlayingPage"
@@ -35,6 +37,8 @@
         			android:label="Free For All"></activity>
         <activity android:name="llt.locallasertag.game.CreateGame"
             		android:label="Game Creation"></activity>
+        <activity android:name="llt.locallasertag.game.Room"
+            		android:label="Room"></activity>
     
              
     </application>

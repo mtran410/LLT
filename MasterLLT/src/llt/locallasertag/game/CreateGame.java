@@ -1,6 +1,7 @@
 package llt.locallasertag.game;
 
 import llt.locallasertag.R;
+import llt.locallasertag.nongame.HowToPlay;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,4 +34,9 @@ public class CreateGame extends Activity {
 		 
 	}
 
+	public void GameCreate (View v)
+	{
+      Intent intent = new Intent(this, Room.class);
+      startActivity(intent);
+	}
 }

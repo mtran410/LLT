@@ -15,7 +15,6 @@ import android.widget.TextView;
 public class TimerActivity extends Activity implements OnClickListener {	 	 
 	 private CountDownTimer countDownTimer;
 	 private boolean timerHasStarted = false;//start or not
-	 private Button startB, changeB;//button 
 	 public TextView text;//text box
 	 public EditText newTimer;
 	 //private final long seconds;//second to count down from
@@ -28,48 +27,21 @@ public class TimerActivity extends Activity implements OnClickListener {
 	 public void onCreate(Bundle savedInstanceState) {
 	  super.onCreate(savedInstanceState);
 	  setContentView(R.layout.activity_timer);
-	  
-	  addListenerOnButton();
-	  
-	  newTimer= (EditText)findViewById(R.id.newTime);
-	  final long seconds = 5;//Long.parseLong(newTimer.getText().toString());
+	  	  
+	  final long seconds = 6;//Long.parseLong(newTimer.getText().toString());
 	  final long startTime = seconds*1000;
-	  startB = (Button) this.findViewById(R.id.startB);//start button
-	  startB.setOnClickListener(this);//listener for start button
 	  text = (TextView) this.findViewById(R.id.timer);//timer display
 	  countDownTimer = new MyCountDownTimer(startTime, interval);//instance of class 
 	  text.setText(text.getText() + String.valueOf(startTime / 1000));//set initial time
-	  myMedia = MediaPlayer.create(this, R.raw.count3);//to play sound countdown
+	  myMedia = MediaPlayer.create(this, R.raw.count);//to play sound countdown
+	  playerTime= Long.parseLong("6");
+	  text.setText(String.valueOf(playerTime));//set initial time
+	  countDownTimer.start();//start the timer
+	  timerHasStarted = true;
 	 }
 	 //Button listener to change the timer
-	 public void addListenerOnButton(){
-		 changeB= (Button)findViewById(R.id.changeTime);//button to change time
-		 changeB.setOnClickListener(new OnClickListener(){
-			 public void onClick(View arg0){
-				 
-				 playerTime= Long.parseLong(newTimer.getText().toString());
-				 final long startTime = playerTime*1000;
-				 text.setText(String.valueOf(playerTime));//set initial time
-				 countDownTimer = new MyCountDownTimer(startTime, interval);//instance of class
-			 }
-		 });
-	 }
-	 public void onClick(View v) {//do on click
-	  if (!timerHasStarted) {//initial start button value
-	   countDownTimer.start();//start the timer
-	   timerHasStarted = true;
-	   startB.setText("STOP");//change the button to stop
-	  // if(startB.getText().toString() == "STOP")//sound file right now not sinc
-		   //myMedia.pause();
-	  } else {
-	   countDownTimer.cancel();//if count down started then do if push again
-	   timerHasStarted = false;//
-	   startB.setText("RESTART");//button display restart
-	  // if(startB.getText().toString() == "RESTART")
-		  // myMedia.stop();
-	  }
-	 }
-	 
+	
+ 
 	 public class MyCountDownTimer extends CountDownTimer {
 	  public MyCountDownTimer(long startTime, long interval) {//constructor
 	   super(startTime, interval);
@@ -77,18 +49,21 @@ public class TimerActivity extends Activity implements OnClickListener {
 	 
 	  @Override
 	  public void onFinish() {//when finish display
-		  startActivity(new Intent(TimerActivity.this, OneForAll.class));//go to next page when 10 second left
+		  startActivity(new Intent(TimerActivity.this, PlayingPage.class));//go to next page when 10 second left
 	  }
 	 
 	  @Override
 	  public void onTick(long millisUntilFinished) {//for each tick of second
-		  if( millisUntilFinished / 1000 == 10){//when reach ten start sound
-			  myMedia.start();//start sound
-		  }
-		  
-		text.setText("" + millisUntilFinished / 1000);//display the countdown
-		  
+			  myMedia.start();//start sound  
+			  text.setText("" + millisUntilFinished / 1000);//display the countdown	  
 	  }
 	 }
+
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
 	 
 	}
