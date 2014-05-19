@@ -12,10 +12,17 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.TextView;
 
 public class JSONfunctions
 {
+	
+	
+	
+
+
    public static JSONObject getJSONfromURL(String url)
    {
       InputStream is = null;

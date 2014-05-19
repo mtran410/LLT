@@ -1,6 +1,30 @@
 package llc.locallasertag;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+
+
+import llc.locallasertag.util.JSONfunctions;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.media.RingtoneManager;
+import android.os.AsyncTask;
+import android.util.Log;
 
 /*
  * Player Class
@@ -9,108 +33,96 @@ import android.app.Activity;
  * avatar, current score, user name, player id, IGN, and so forth
  */
 
-public class Player extends Activity {// implements ActionListener{
+public class Player {// implements ActionListener{
 
-   int avatarNum = 1; // for avatar integers 1-35 correspond to a preloaded image, integer 0 corresponds the user had uploaded his/her own image
-   //Image avatar = new IconImage();
-   private String IGN;
-   private String id; //used to identify player server side
-   private int health = 100; //is reset to 100 when game begins
-   private int wins, loses; //total wins and loses of the player
-   int NUMBER_OF_AVATARS = 35;
+	   int avatarNum = 1; // for avatar integers 1-35 correspond to a preloaded image, integer 0 corresponds the user had uploaded his/her own image
+	   private String IGN;
+	   private int id; //used to identify player server side
+	   private double health = 100; //is reset to 100 when game begins
+	   private int wins, loses; //total wins and loses of the player
+	   private int NUMBER_OF_AVATARS = 35;
+	   private String team;
+	   
+	   private Context context;
+	   
+	   public Player() { // creates player from saved file OR a default player if file not found
+		 // id =name;
+	     loadPlayer(); //if load player fails, create default player
+	     //this.context=context;
+	   }
 
-   public Player() { // creates player from saved file OR a default player if file not found
+	   public Player(String IGN, int avatarNum) { // player when created in edit menu -- parameters should be IGN, icon, id?
+		  //id = getUsername();
+	      this.avatarNum = avatarNum;
+	      this.IGN = IGN;
+	      savePlayerData();
+	   }
 
-      //cannot create player in default constructor 
-   }
+	   private boolean loadPlayer() {
+	      //TODO download player info from server and place into local variables
+		  // new LongOperation().execute("");
+	      return false;
+	   }
 
-   public Player(String id, String IGN, int avatarNum, int health) { // a player, created for each person in lobby when MyPlayer joins a lobby or game
-      this.health = health;
-      this.avatarNum = avatarNum;
-      this.IGN = IGN;
-      //used to create a player from EDIT menu
+		
+	   public boolean savePlayerData() {
+	      //TODO upload player data to server
 
-      //if ()
+	      return true;
+	   }
 
-   }
+	  
 
-   public boolean setHealth(int h) {
-      //returns true if setHealth worked
-      if (h > 100 || h < 0) //health to set must be 0<h<100
-         return false;
+	   public void loseHealth(int toLose) {
+	      if (toLose > 0) //health to lose must be positive
+	         health -= toLose;
+	   }
 
-      health = h;
+	   public boolean status() {
+	      return health > 0;
+	   }
+	   public String getTeam() {
+		      return team;
+		}
+	   public void setTeam(String team) {
+			  this.team =team;
+		}
+	   public String getIGN() {
+	      return IGN;
+	   }
 
-      return true;
-   }
+	   public int getId() {
+	      return id;
+	   }
+	   public void setID(int id) {
+		      this.id =id;
+		}
+	   public void setIGN(String IGN) {
+		      this.IGN =IGN;
+		}
+	   public double getHealth() {
+	      return health;
+	   }
+	   public void setHealth(double health) {
+		      this.health =health;
+		}
 
-   public void loseHealth(int toLose) {
-      if (toLose > 0) //health to lose must be positive
-         health -= toLose;
+	   public int getWins() {
+	      return wins;
+	   }
 
-      if (health < 0) {
-         health = 0;
-         //call death function?
-      }
-   }
+	   public int getLoses() {
+	      return loses;
+	   }
 
-   private boolean avatarExists() {
-      //returns true if avatar file exists in file system
+	   public String getWinsOverTotal() {
+	      int total = wins + loses;
+	      return wins + "/" + total;
+	   }
 
-      if (avatarNum >= 1 && avatarNum <= NUMBER_OF_AVATARS) // 
-         return true;
-      else {
-         // TODO return true if uploaded avatar file exists
-      }
-
-      return true;
-   }
-
-   private boolean usingPreLoadedAvatar() { //returns true if player is using preloaded avatar
-      return !(avatarNum == 0);
-   }
-
-   /* TODO
-   public image/drawable getAvatar(){
-      if (usingPreLoadedAvatar()){ //returns preploaded image
-         return 
-      } else //returns user uplaoded image
-       return 
-         
-   }
-   */
-
-   public boolean status() {
-      return health > 0;
-   }
-
-   public String getIGN() {
-      return IGN;
-   }
-
-   public String getId() {
-      return id;
-   }
-
-   public int getHealth() {
-      return health;
-   }
-
-   public int getWins() {
-      return wins;
-   }
-
-   public int getLoses() {
-      return loses;
-   }
-
-   public String getWinsOverTotal() {
-      int total = wins + loses;
-      return wins + "/" + total;
-   }
-
-   public int getWinPercentage() {
-      return (int) ((double) wins / (wins + loses)) * 100;
-   }
-
-}
+	   public int getWinPercentage() {
+	      return (int) ((double) wins / (wins + loses)) * 100;
+	   }
+	   
+	   
+	}

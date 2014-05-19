@@ -42,17 +42,15 @@
                 android:textColor="#ffffff"
                 android:textSize="30sp" />
 
-           
-            
-            <ProgressBar
+            <Button
                 android:id="@+id/healthBar1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_alignParentLeft = "true"
+               	android:pivotX="5%"
+               	android:pivotY="50%"
                 android:background="#ff0000"
-                android:minHeight="10dp"
-           android:text="Health Bar"  />
+                android:text="Health Bar" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -96,7 +94,7 @@
         android:minHeight="60dp"
         android:minWidth="60dp"
         android:orientation="horizontal"
-        android:visibility="visible" >
+        android:visibility="invisible" >
 
         <TextView
             android:id="@+id/avatar2"
@@ -113,16 +111,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-
-                   <ProgressBar
+            <Button
                 android:id="@+id/bar2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-           android:text="Health Bar"  />
+                android:pivotX="5%"
+                android:pivotY="50%"
+                android:text="Health Bar" />
 
 
             <LinearLayout
@@ -169,7 +167,7 @@
          android:layout_height="70dp"
          android:layout_weight="0.23"
          android:orientation="horizontal"
-         android:visibility="visible" >
+         android:visibility="invisible" >
 
         <TextView
             android:id="@+id/avatar3"
@@ -184,15 +182,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-<ProgressBar
+            <Button
                 android:id="@+id/bar3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-           android:text="Health Bar"  />
+                android:pivotX="5%"
+                android:pivotY="50%"
+                android:text="Health Bar" />
 
 
             <LinearLayout
@@ -239,7 +238,7 @@
          android:layout_height="70dp"
          android:layout_weight="0.23"
          android:orientation="horizontal"
-         android:visibility="visible" >
+         android:visibility="invisible" >
 
         <TextView
             android:id="@+id/avatar4"
@@ -254,15 +253,15 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-<ProgressBar
-                android:id="@+id/bar4"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/bar4" android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-           android:text="Health Bar"  />
+                android:pivotX="5%"
+                android:pivotY="50%"
+                android:text="Health Bar" />
 
            <LinearLayout
                 android:layout_width="match_parent"
@@ -308,7 +307,7 @@
         android:layout_height="70dp"
         android:layout_weight="0.23"
         android:orientation="horizontal"
-        android:visibility="visible" >
+        android:visibility="invisible" >
 
         <TextView
             android:id="@+id/avatar5"
@@ -323,15 +322,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-<ProgressBar
+            <Button
                 android:id="@+id/bar5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-           android:text="Health Bar"  />
+                android:pivotX="5%"
+                android:pivotY="50%"
+                android:text="Health Bar" />
 
           <LinearLayout
                 android:layout_width="match_parent"
@@ -378,7 +378,7 @@
         android:layout_height="70dp"
         android:layout_weight="0.23"
         android:orientation="horizontal"
-        android:visibility="visible" >
+        android:visibility="invisible" >
 
         <TextView
             android:id="@+id/avatar6"
@@ -393,15 +393,16 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-<ProgressBar
+            <Button
                 android:id="@+id/bar6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                style="?android:attr/progressBarStyleHorizontal"
                 android:background="#ff0000"
                 android:minHeight="10dp"
-           android:text="Health Bar"  />
+                android:pivotX="5%"
+                android:pivotY="50%"
+                android:text="Health Bar" />
 
 
           <LinearLayout
@@ -448,7 +449,7 @@
         android:layout_height="wrap_content" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/playername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.05"
