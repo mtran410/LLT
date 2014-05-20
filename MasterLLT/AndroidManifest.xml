@@ -7,7 +7,9 @@
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -22,6 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        
+        
         <activity android:name="llt.locallasertag.game.MainActivity"></activity>
         <activity android:name="llt.locallasertag.nongame.HowToPlay"
                   	android:label="How To Play"></activity>
@@ -29,17 +34,15 @@
              		android:label="Settings"
              		 android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name="llt.locallasertag.game.Lobby"
-					android:label="Lobby"></activity>
+					android:label="Lobby"
+					android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
         <activity android:name="llt.locallasertag.game.PlayingPage"
 					android:label="Team Deathmatch"></activity>
         <activity android:name="llt.locallasertag.game.TimerActivity"></activity>
-        <activity android:name="llt.locallasertag.game.OneForAll"
-        			android:label="Free For All"></activity>
         <activity android:name="llt.locallasertag.game.CreateGame"
             		android:label="Game Creation"></activity>
         <activity android:name="llt.locallasertag.game.Room"
             		android:label="Room"></activity>
-    
              
     </application>
 
