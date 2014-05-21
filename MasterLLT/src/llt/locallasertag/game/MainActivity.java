@@ -18,6 +18,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -26,6 +27,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 	Button startButton, how;
@@ -38,7 +40,23 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		mainActivity=this;
+		
+      Typeface start = Typeface.createFromAsset(getAssets(),
+            "fonts/moonhouse.ttf");
+    TextView tv = (TextView) findViewById(R.id.startbutton);
+    tv.setTypeface(start);
+    
+    Typeface htp = Typeface.createFromAsset(getAssets(),
+          "fonts/moonhouse.ttf");
+  TextView tx = (TextView) findViewById(R.id.howtoplay);
+  tx.setTypeface(htp);
 
+  Typeface setting = Typeface.createFromAsset(getAssets(),
+        "fonts/moonhouse.ttf");
+TextView ts = (TextView) findViewById(R.id.setting);
+ts.setTypeface(setting);
+
+		
    }
    
  

@@ -32,8 +32,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.Menu;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class PlayingPage extends Activity {
@@ -90,6 +90,8 @@ public class PlayingPage extends Activity {
 		player_team =settings.getString("team", "n/a"); 
 		
 		if(player_team.equals("RED")){
+			RelativeLayout rl = (RelativeLayout) findViewById(R.id.teamPlayer);
+			rl.setBackgroundColor(Color.parseColor("#800000"));
 			TextView top = (TextView) findViewById(R.id.Player);
 			top.setBackgroundColor(Color.parseColor("#800000"));
 			TextView middle = (TextView) findViewById(R.id.Team);

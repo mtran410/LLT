@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/teamPlayer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-
+    android:layout_height="wrap_content"
+    android:background="#1a2a5a" >
 
     <ImageView
         android:id="@+id/face"
@@ -20,7 +20,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="18dp"
             android:layout_toRightOf="@+id/face"
-            android:text="FILENAME" />
+            android:text="FILENAME" 
+            android:textColor="#ffffff"/>
 
             <ProgressBar
                 android:id="@+id/downloadProgressBar"
@@ -31,15 +32,5 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@id/downloadFileName" />
 
-              <LinearLayout
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:layout_alignParentLeft="true"
-                  android:layout_alignParentRight="true"
-                  android:layout_below="@+id/face"
-                  android:layout_marginTop="24dp"
-                  android:orientation="vertical" >
-
-              </LinearLayout>
 
 </RelativeLayout>

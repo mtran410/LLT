@@ -4,6 +4,9 @@ import java.util.List;
 
 import llt.locallasertag.R;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,10 +70,10 @@ public class DownloadInfoArrayAdapter extends ArrayAdapter<DownloadInfo> {
     }
 
     holder.textView.setText(info.getFilename());
-    holder.progressBar.setProgress(info.getProgress());
+    holder.progressBar.setProgress(info.getProgress());    
     holder.progressBar.setMax(info.getFileSize());
-    info.setProgressBar(holder.progressBar);
     
+    info.setProgressBar(holder.progressBar);
     if(info.getProgress() > 88)
    	 holder.pic.setImageResource(R.drawable.face1);
     else if(info.getProgress() > 76)
@@ -80,11 +83,17 @@ public class DownloadInfoArrayAdapter extends ArrayAdapter<DownloadInfo> {
     else if(info.getProgress() > 52)
    	 holder.pic.setImageResource(R.drawable.face4);
     else if(info.getProgress() > 40)
+    {
    	 holder.pic.setImageResource(R.drawable.face5);
+   	 holder.progressBar.setProgressDrawable(convertView.getResources().getDrawable(R.drawable.yellowprogressbar));
+    }
     else if(info.getProgress() > 28)
    	 holder.pic.setImageResource(R.drawable.face7);
     else if(info.getProgress() > 16)
+    {
    	 holder.pic.setImageResource(R.drawable.face7);
+   	 holder.progressBar.setProgressDrawable(convertView.getResources().getDrawable(R.drawable.redprogressbar));
+    }
     else if(info.getProgress() > 0)
    	 holder.pic.setImageResource(R.drawable.face8);
     else 

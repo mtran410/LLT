@@ -8,45 +8,51 @@
  >
 
     <Button
-        android:id="@+id/startbutton"
+        android:id="@+id/setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/howtoplay"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="136dp"
-        android:minWidth="220dip"
-        android:onClick="gameStart"
-        android:text="START"
-        android:textColor="#FFffff"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:minWidth="230dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="gameSettings"
+        android:text="SETTINGS"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
-        android:textStyle="bold" />
+ />
 
     <Button
         android:id="@+id/howtoplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/startbutton"
+        android:layout_above="@+id/setting"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:minWidth="220dp"
+        android:layout_marginBottom="30dp"
+        android:minWidth="230dp"
+        android:background="@drawable/buttonshape"
         android:onClick="gameInstructions"
-        android:text="HOW TO PLAY/DISCLAIMER"
-        android:textColor="#FFFFFF"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/howtoplay"
-        android:layout_below="@+id/howtoplay"
-        android:layout_marginTop="40dp"
-        android:minWidth="220dp"
-        android:onClick="gameSettings"
-        android:text="SETTINGS"
+        android:text="DISCLAIMER"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        android:textStyle="bold" />
+   />
+
+    <Button
+        android:id="@+id/startbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/howtoplay"
+        android:layout_alignRight="@+id/howtoplay"
+        android:layout_marginBottom="30dp"
+         android:minWidth="230dp"
+        android:background="@drawable/buttonshape"
+        android:onClick="gameStart"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="START"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
 
 </RelativeLayout>

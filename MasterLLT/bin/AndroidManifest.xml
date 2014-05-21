@@ -27,7 +27,8 @@
         
         
         
-        <activity android:name="llt.locallasertag.game.MainActivity"></activity>
+        <activity android:name="llt.locallasertag.game.MainActivity"
+            ></activity>
         <activity android:name="llt.locallasertag.nongame.HowToPlay"
                   	android:label="How To Play"></activity>
         <activity android:name="llt.locallasertag.nongame.Setting"
@@ -35,7 +36,8 @@
              		 android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name="llt.locallasertag.game.Lobby"
 					android:label="Lobby"
-					android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
+					android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+					 android:windowSoftInputMode="stateHidden"></activity>
         <activity android:name="llt.locallasertag.game.PlayingPage"
 					android:label="Team Deathmatch"></activity>
         <activity android:name="llt.locallasertag.game.TimerActivity"></activity>
