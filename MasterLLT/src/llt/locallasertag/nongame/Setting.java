@@ -53,7 +53,6 @@ public class Setting extends Activity {
       gView.setAdapter(new ImageAdapter(this));
    }
 
-   ////////////////toedit////////////////////////////////////////////////////////////////////
    private class LongOperation extends AsyncTask<String, Void, String> {
 
       @Override
@@ -102,8 +101,6 @@ public class Setting extends Activity {
       protected void onProgressUpdate(Void... values) {
       }
    }
-
-   /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
    public class ImageAdapter extends BaseAdapter {
       private Context mContext;
