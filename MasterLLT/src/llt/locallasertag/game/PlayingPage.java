@@ -1,5 +1,6 @@
 package llt.locallasertag.game;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +26,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -32,6 +34,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -40,6 +43,9 @@ public class PlayingPage extends Activity {
 
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private ArrayList<Player> AllPlayers = new ArrayList<Player>();
+	private LinearLayout screen;
+	private TextView playerText, teamText, scoreText;
+	public MediaPlayer gunSound;//play sound
 	private JSONObject jObject;
 	Timer timer;
 	MyTimerTask myTimerTask;
@@ -56,12 +62,31 @@ public class PlayingPage extends Activity {
 	Player myplayer;
 	int player_id;
 	String player_team;
-	int red_score=0, blue_score=0;
+	int red_score=0, blue_score=0, backgroundColor;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.playingpage);
-
+		screen = (LinearLayout)findViewById(R.id.txtscreen);
+		gunSound = MediaPlayer.create(this, R.raw.gunshot);//to play sound countdown
+		gunSound.setLooping(true);
+		
+		try {
+			gunSound.prepare();
+		} catch (IllegalStateException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		gunSound.start();
+		gunSound.pause();
+		playerText = (TextView)findViewById(R.id.Player);
+		teamText =(TextView)findViewById(R.id.Team);
+		scoreText=(TextView)findViewById(R.id.Score);
+		//backgroundColor = scoreText.g
 		SensorManager mySensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		Sensor LightSensor = mySensorManager
 				.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -341,11 +366,16 @@ public class PlayingPage extends Activity {
 				if (event.values[0] > lightAmount && myplayer.getHealth()>0) {
 					
 					myplayer.setHealth(myplayer.getHealth() - subHealth);
-
+					if(!gunSound.isPlaying())
+						gunSound.start();
 					downloadInfo.get(0).setProgress((int) myplayer.getHealth());
-
+					//playerText.setBackgroundColor(Color.RED);
+					//playerText.setBackgroundColor(backgroundColor);
 					firstArrayAdapter.notifyDataSetChanged();
 
+				}
+				else{
+					gunSound.pause();
 				}
 
 			}

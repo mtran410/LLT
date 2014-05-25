@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/txtscreen"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="15" >
-
-    <TextView
-        android:id="@+id/Player"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#1a2a5a"
-        android:gravity="center"
-        android:text="Player"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp" 
-        android:layout_weight="2"/>
-
+    android:background="#000000"
+    android:orientation="vertical" >
+    
+      <TextView
+          android:id="@+id/Player"
+          android:layout_width="match_parent"
+          
+          android:layout_alignParentTop="true"
+          android:layout_weight="2"
+          android:background="#1a2a5a"
+          android:gravity="center"
+          android:minHeight="30dp"
+          android:text="Player"
+          android:textColor="#FFFFFF"
+          android:textSize="24sp" />
+    
     <ListView
         android:layout_weight="2"
         android:id="@+id/downloadListView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+      
+        android:minHeight="30dp"
         android:focusable="false"
+        android:layout_below="@+id/Player"
          >
     </ListView>
 
@@ -36,7 +40,8 @@
         android:height="50dp"
         android:text="Team"
         android:textColor="#FFFFFF"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:layout_below="@+id/downloadListView" />
 
     <ListView
         android:layout_weight="5"
@@ -44,26 +49,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:focusable="false"
-        android:height="86dp" >
+        android:height="86dp" 
+        android:layout_below="@+id/Team">
     </ListView>
 
     <TextView
-        android:layout_weight="2"
         android:id="@+id/Score"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_below="@+id/downloadListView2"
+        android:layout_weight="2"
         android:background="#1a2a5a"
         android:gravity="center"
         android:height="50dp"
+        android:minHeight="30dp"
         android:text="Score"
         android:textColor="#FFFFFF"
         android:textSize="24sp" />
 
     <LinearLayout
-        android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:weightSum="2">
+        android:layout_alignParentBottom="true"
+        android:layout_weight="2"
+        android:weightSum="2" >
 
         <TextView
             android:id="@+id/redscore"
@@ -88,4 +97,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
