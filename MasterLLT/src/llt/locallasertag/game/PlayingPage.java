@@ -369,13 +369,12 @@ public class PlayingPage extends Activity {
 					if(!gunSound.isPlaying())
 						gunSound.start();
 					downloadInfo.get(0).setProgress((int) myplayer.getHealth());
-					//playerText.setBackgroundColor(Color.RED);
-					//playerText.setBackgroundColor(backgroundColor);
 					firstArrayAdapter.notifyDataSetChanged();
 
 				}
 				else{
-					gunSound.pause();
+					if(gunSound.isPlaying())
+						gunSound.pause();
 				}
 
 			}

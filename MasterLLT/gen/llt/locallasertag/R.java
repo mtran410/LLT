@@ -138,9 +138,8 @@ public final class R {
         public static final int howtoplay=0x7f030006;
         public static final int player=0x7f030007;
         public static final int playingpage=0x7f030008;
-        public static final int playingpage2=0x7f030009;
-        public static final int room=0x7f03000a;
-        public static final int splashscreen=0x7f03000b;
+        public static final int room=0x7f030009;
+        public static final int splashscreen=0x7f03000a;
     }
     public static final class raw {
         public static final int count=0x7f040000;
