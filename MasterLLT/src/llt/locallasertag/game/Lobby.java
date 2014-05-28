@@ -14,6 +14,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 public class Lobby extends Activity {
@@ -29,6 +32,7 @@ public class Lobby extends Activity {
    private ListView lv;
    private JSONObject jObject;
    ArrayAdapter<String> arrayAdapter;
+   private EditText sb;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +40,26 @@ public class Lobby extends Activity {
       setContentView(R.layout.activity_lobby);
 
       lv = (ListView) findViewById(R.id.gameList);
+      sb = (EditText) findViewById(R.id.searchbar);
+      Button createGame = (Button) findViewById(R.id.btnCreateGame);
 
-      // Instanciating an array list (you don't need to do this,
-      // you already have yours).
+      sb.addTextChangedListener(new TextWatcher() {
+
+         @Override
+         public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+            Lobby.this.arrayAdapter.getFilter().filter(cs); // When user changed the Text
+         }
+
+         @Override
+         public void beforeTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+         }
+
+         @Override
+         public void afterTextChanged(Editable arg0) {
+         }
+      });
+
+      // Instanciating an array list (you don't need to do this, you already have yours).
       List<String> your_array_list = new ArrayList<String>();
 
       // This is the array adapter, it takes the context of the activity as a
@@ -51,29 +72,23 @@ public class Lobby extends Activity {
       lv.setAdapter(arrayAdapter);
 
       lv.setOnItemClickListener(new OnItemClickListener() {
-
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             joinGame(view);
          }
       });
-
-      Button createGame = (Button) findViewById(R.id.btnCreateGame);
 
       createGame.setOnClickListener(new OnClickListener() {
          public void onClick(View v) {
             startActivity(new Intent(Lobby.this, CreateGame.class));
          }
       });
-
-      // getActionBar().setDisplayHomeAsUpEnabled(true);
    }
 
    @Override
    public boolean onOptionsItemSelected(MenuItem item) {
-      // TODO Auto-generated method stub
-      if (item.getItemId() == android.R.id.home) {
+      if (item.getItemId() == android.R.id.home)
          finish();
-      }
+
       return super.onOptionsItemSelected(item);
    }
 
@@ -83,7 +98,6 @@ public class Lobby extends Activity {
    }
 
    private class LongOperation extends AsyncTask<String, Void, String> {
-
       @Override
       protected String doInBackground(String... params) {
          jObject = JSONfunctions.getJSONfromURL("http://www.jonquybao.com/LLT/feedurls/view_games.php");
@@ -100,14 +114,10 @@ public class Lobby extends Activity {
 
             for (int i = 0; i < jArray.length(); i++) {
                JSONObject object = jArray.getJSONObject(i);
-               if (object.has("name")) {
+               if (object.has("name"))
                   arrayAdapter.add(object.getString("name"));
-
-               }
-
             }
          } catch (JSONException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
          }
          arrayAdapter.notifyDataSetChanged();
@@ -122,5 +132,4 @@ public class Lobby extends Activity {
       protected void onProgressUpdate(Void... values) {
       }
    }
-
 }

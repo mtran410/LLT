@@ -68,7 +68,6 @@ public class DownloadInfoArrayAdapter extends ArrayAdapter<DownloadInfo> {
       holder.info = info;
       holder.info.setProgressBar(holder.progressBar);
     }
-
     holder.textView.setText(info.getFilename());
     holder.progressBar.setProgress(info.getProgress());    
     holder.progressBar.setMax(info.getFileSize());

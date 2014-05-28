@@ -43,7 +43,7 @@ public class PlayingPage extends Activity {
 
 	private ArrayList<Player> players = new ArrayList<Player>();
 	private ArrayList<Player> AllPlayers = new ArrayList<Player>();
-	private LinearLayout screen;
+	private RelativeLayout screen;
 	private TextView playerText, teamText, scoreText;
 	public MediaPlayer gunSound;//play sound
 	private JSONObject jObject;
@@ -67,8 +67,8 @@ public class PlayingPage extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		setContentView(R.layout.playingpage);
-		screen = (LinearLayout)findViewById(R.id.txtscreen);
+		setContentView(R.layout.playingpage2);
+		screen = (RelativeLayout)findViewById(R.id.txtscreen);
 		gunSound = MediaPlayer.create(this, R.raw.gunshot);//to play sound countdown
 		gunSound.setLooping(true);
 		
