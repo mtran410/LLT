@@ -20,6 +20,9 @@ import org.json.JSONObject;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -34,7 +37,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -113,21 +115,21 @@ public class PlayingPage extends Activity {
 		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 		player_id = (int)settings.getInt("pid", 0); 
 		player_team =settings.getString("team", "n/a"); 
-		
+		/*
 		if(player_team.equals("RED")){
-			RelativeLayout rl = (RelativeLayout) findViewById(R.id.teamPlayer);
-			rl.setBackgroundColor(Color.parseColor("#800000"));
 			TextView top = (TextView) findViewById(R.id.Player);
 			top.setBackgroundColor(Color.parseColor("#800000"));
 			TextView middle = (TextView) findViewById(R.id.Team);
 			middle.setBackgroundColor(Color.parseColor("#800000"));
 			TextView bottom = (TextView) findViewById(R.id.Score);
 			bottom.setBackgroundColor(Color.parseColor("#800000"));
-		}
+		}*/
 		/*
 		 * 
 		 * for(int i = 0; i < 1; ++i) { downloadInfo.add(currentInfo); }
 		 */
+		
+		// TODO set bg color to red if on red team
 
 		firstArrayAdapter = new DownloadInfoArrayAdapter(
 				getApplicationContext(), R.id.downloadListView, downloadInfo);
@@ -383,4 +385,25 @@ public class PlayingPage extends Activity {
 
 	};
 
+	public void onBackPressed() {
+		 final Intent startMain = new Intent(this, MainActivity.class);
+		new AlertDialog.Builder(this)
+	    .setTitle("Exit Game")
+	    .setMessage("Are you sure you want to quit?")
+	    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	            // continue with delete	   	    	      	  
+		        startActivity(startMain);
+		        finish();
+	        }
+	     })
+	    .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) { 
+	            // do nothing
+	        }
+	     })
+	    .setIcon(android.R.drawable.ic_dialog_alert)
+	     .show();
+
+	}
 }

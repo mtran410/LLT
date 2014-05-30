@@ -65,5 +65,6 @@ public class TimerActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		
 	}
-	 
+	public void onBackPressed() {
+	}
 	}

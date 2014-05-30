@@ -1,7 +1,6 @@
 package llt.locallasertag.game;
 
 import llt.locallasertag.R;
-import llt.locallasertag.nongame.HowToPlay;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
