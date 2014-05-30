@@ -49,7 +49,7 @@ public class TimerActivity extends Activity implements OnClickListener {
 	 
 	  @Override
 	  public void onFinish() {//when finish display
-		  startActivity(new Intent(TimerActivity.this, PlayingPage.class));//go to next page when 10 second left
+		  startActivity(new Intent(TimerActivity.this, BulletAnimation.class));//go to next page when 10 second left
 	  }
 	 
 	  @Override

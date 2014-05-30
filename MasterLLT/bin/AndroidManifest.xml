@@ -64,6 +64,8 @@
              android:screenOrientation="portrait"
              android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             		android:label="Room"></activity>
+        <activity android:name=".background.BulletAnimation"></activity>
+        <activity android:name=".game.BulletAnimation"></activity>
              
     </application>
 

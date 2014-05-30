@@ -70,7 +70,7 @@ public class PlayingPage extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.playingpage2);
-		screen = (RelativeLayout)findViewById(R.id.txtscreen);
+		//screen = (RelativeLayout)findViewById(R.id.txtscreen);
 		gunSound = MediaPlayer.create(this, R.raw.gunshot);//to play sound countdown
 		gunSound.setLooping(true);
 		
