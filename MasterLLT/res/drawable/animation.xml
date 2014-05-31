@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:drawable="@drawable/bullet1" android:duration="500"/>
-    <item android:drawable="@drawable/bullet2" android:duration="500"/>
-    <item android:drawable="@drawable/bullet3" android:duration="500"/>
-    <item android:drawable="@drawable/bullet4" android:duration="500"/>
-    <item android:drawable="@drawable/bullet5" android:duration="500"/>
-    <item android:drawable="@drawable/bullet6" android:duration="500"/>
+    <item android:drawable="@drawable/bullethole1" android:duration="500"/>
+    <item android:drawable="@drawable/bullethole2" android:duration="500"/>
+    <item android:drawable="@drawable/bullethole3" android:duration="500"/>
+    <item android:drawable="@drawable/bullethole4" android:duration="500"/>
+    <item android:drawable="@drawable/bullethole5" android:duration="500"/>
+    <item android:drawable="@drawable/bullethole6" android:duration="500"/>
 
 </animation-list>

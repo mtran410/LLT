@@ -18,7 +18,7 @@ public class BulletAnimation extends Activity {
 		bulletScreen = (ImageView)findViewById(R.id.imageView1);
 		bulletScreen.setBackgroundResource(R.drawable.animation);
 		AnimationDrawable bulletAnimation =(AnimationDrawable) bulletScreen.getBackground();
-		bulletScreen.setAlpha(.8f);
+		bulletScreen.setAlpha(1f);
 		bulletAnimation.start();
 		//bulletAnimation.stop();
 		 //startActivity(new Intent(TimerActivity.this, PlayingPage.class));//go to next page when 10 second left
