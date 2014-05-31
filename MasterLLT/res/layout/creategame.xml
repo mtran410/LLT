@@ -29,8 +29,8 @@
         android:singleLine="true"
         android:hint="Enter Game Name"
         android:minHeight="50dp"
-        android:textColor="#ff0000"
-        android:textColorHint="#ffcccc"
+        android:textColor="#48ff48"
+        android:textColorHint="#48ff00"
         android:textStyle="bold" />
 
     <Spinner
@@ -43,7 +43,8 @@
         android:layout_marginTop="30dp"
         android:entries="@array/GameType"
         android:minHeight="50dp"
-        android:prompt="@string/Games" />
+        android:prompt="@string/Games" 
+        android:background="@drawable/lobbylist"/>
 
     <Spinner
         android:id="@+id/spinNumberPlayer"
@@ -55,7 +56,8 @@
         android:layout_marginTop="37dp"
         android:entries="@array/numPlayer"
         android:minHeight="50dp"
-        android:prompt="@string/NumberPlayer" />
+        android:prompt="@string/NumberPlayer" 
+        android:background="@drawable/lobbylist"/>
 
     <Button
         android:id="@+id/txtDone"
@@ -64,7 +66,14 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="Done" 
-        android:onClick="GameCreate"/>
+        android:onClick="GameCreate"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#48ff00"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="5"
+        android:textColor="#000000"
+        android:textSize="30sp"/>
 
     <TextView
         android:id="@+id/TextView01"
