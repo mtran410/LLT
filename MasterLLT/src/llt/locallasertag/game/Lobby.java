@@ -65,7 +65,7 @@ public class Lobby extends Activity {
       // This is the array adapter, it takes the context of the activity as a
       // first parameter, the type of list view as a second parameter and your
       // array as a third parameter.
-      arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, your_array_list);
+      arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, your_array_list);
 
       new LongOperation().execute("");
 

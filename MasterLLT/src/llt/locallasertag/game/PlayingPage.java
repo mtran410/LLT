@@ -11,6 +11,7 @@ import llt.locallasertag.R;
 import llt.locallasertag.background.DownloadInfo;
 import llt.locallasertag.background.DownloadInfoArrayAdapter;
 import llt.locallasertag.background.Player;
+import llt.locallasertag.nongame.BulletAnimation;
 import llt.locallasertag.util.JSONfunctions;
 
 import org.json.JSONArray;
@@ -37,6 +38,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,6 +46,7 @@ import android.widget.TextView;
 public class PlayingPage extends Activity {
 
 	private ArrayList<Player> players = new ArrayList<Player>();
+	private ArrayList<Player> enemyPlayers = new ArrayList<Player>();
 	private ArrayList<Player> AllPlayers = new ArrayList<Player>();
 	private RelativeLayout screen;
 	private TextView playerText, teamText, scoreText;
@@ -55,8 +58,10 @@ public class PlayingPage extends Activity {
 	DownloadInfo currentInfo;
 	List<DownloadInfo> downloadInfo;
 	List<DownloadInfo> downloadInfo2;
+	List<DownloadInfo> downloadInfo3;
 	DownloadInfoArrayAdapter firstArrayAdapter;
 	DownloadInfoArrayAdapter secondArrayAdapter;
+	DownloadInfoArrayAdapter enemyArrayAdapter;
 	Uri notification;
 	Ringtone r;
 	float lightAmount = 300f;
@@ -64,6 +69,7 @@ public class PlayingPage extends Activity {
 	Player myplayer;
 	int player_id;
 	String player_team;
+	ImageView imView;
 	int red_score=0, blue_score=0, backgroundColor;
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +91,7 @@ public class PlayingPage extends Activity {
 		}
 		gunSound.start();
 		gunSound.pause();
-		playerText = (TextView)findViewById(R.id.Player);
+	
 		teamText =(TextView)findViewById(R.id.Team);
 		scoreText=(TextView)findViewById(R.id.Score);
 		//backgroundColor = scoreText.g
@@ -105,8 +111,7 @@ public class PlayingPage extends Activity {
 			e.printStackTrace();
 		}
 		myplayer = new Player();
-
-		currentInfo = new DownloadInfo("ME", 100);
+		currentInfo = new DownloadInfo("ME", 100,1);
 		ListView listView = (ListView) findViewById(R.id.downloadListView);
 
 		downloadInfo = new ArrayList<DownloadInfo>();
@@ -115,15 +120,15 @@ public class PlayingPage extends Activity {
 		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 		player_id = (int)settings.getInt("pid", 0); 
 		player_team =settings.getString("team", "n/a"); 
-		/*
+		
+		imView = (ImageView) findViewById(R.id.headStatus);
+
+		RelativeLayout rl = (RelativeLayout) findViewById(R.id.txtscreen);
 		if(player_team.equals("RED")){
-			TextView top = (TextView) findViewById(R.id.Player);
-			top.setBackgroundColor(Color.parseColor("#800000"));
-			TextView middle = (TextView) findViewById(R.id.Team);
-			middle.setBackgroundColor(Color.parseColor("#800000"));
-			TextView bottom = (TextView) findViewById(R.id.Score);
-			bottom.setBackgroundColor(Color.parseColor("#800000"));
-		}*/
+			 rl.setBackgroundColor(Color.parseColor("#800000"));
+		}
+		else	
+			 rl.setBackgroundColor(Color.parseColor("#1a2a5a"));
 		/*
 		 * 
 		 * for(int i = 0; i < 1; ++i) { downloadInfo.add(currentInfo); }
@@ -136,8 +141,10 @@ public class PlayingPage extends Activity {
 		listView.setAdapter(firstArrayAdapter);
 
 		ListView listView2 = (ListView) findViewById(R.id.downloadListView2);
-
+		ListView enemyList = (ListView) findViewById(R.id.enemyTeam);
+		
 		downloadInfo2 = new ArrayList<DownloadInfo>();
+		downloadInfo3 = new ArrayList<DownloadInfo>();
 		/*
 		 * for(int i = 0; i < 4; ++i) { downloadInfo2.add(new
 		 * DownloadInfo("File " + i, 100)); }
@@ -146,11 +153,18 @@ public class PlayingPage extends Activity {
 		secondArrayAdapter = new DownloadInfoArrayAdapter(
 				getApplicationContext(), R.id.downloadListView, downloadInfo2);
 		listView2.setAdapter(secondArrayAdapter);
+		
+		enemyArrayAdapter = new DownloadInfoArrayAdapter(
+				getApplicationContext(), R.id.downloadListView, downloadInfo3);
+		enemyList.setAdapter(enemyArrayAdapter);
 
+	
 		timer = new Timer();
 		myTimerTask = new MyTimerTask();
 
 		timer.schedule(myTimerTask, 0, 100);
+
+		
 	}
 
 	private class MyTimerTask extends TimerTask {
@@ -226,6 +240,10 @@ public class PlayingPage extends Activity {
 								.getString("team"));
 
 					}
+					if(object.has("avatar"))
+					{
+						p.setAvatar(Integer.parseInt(object.getString("avatar")));
+					}
 
 					if (firstTime) {
 						AllPlayers.add(p);
@@ -234,11 +252,15 @@ public class PlayingPage extends Activity {
 							Log.d("EPIC", object.getString("username"));
 							myplayer.setID(p.getId());
 							myplayer.setIGN(p.getIGN());
+							myplayer.setAvatar(p.getAvatar());
 
 						} else {
 							if( player_team.equals(object.getString("team")))
-							players.add(p);
+								players.add(p);
+							else
+								enemyPlayers.add(p);
 						}
+						
 						
 					} else {
 						AllPlayers.get(i).setHealth(p.getHealth());
@@ -256,30 +278,39 @@ public class PlayingPage extends Activity {
 			if(firstTime){
 				Log.d("NAME", "NAME");
 				downloadInfo.get(0).setFilename(myplayer.getIGN());
+				downloadInfo.get(0).setAvatar(myplayer.getAvatar());
 				firstArrayAdapter.notifyDataSetChanged();
 			}
 			
-
-
-		
 			if(firstTime){
 				//("FIRST TIME", "FIRSTTIME");
 				for (int i = 0; i < players.size(); i++) {
 					DownloadInfo currentInfo = new DownloadInfo(players.get(i)
-							.getIGN(), 100);
+							.getIGN(), 100, players.get(i).getAvatar());
 					currentInfo.setProgress((int) players.get(i).getHealth());
 					downloadInfo2.add(currentInfo);
 				}
 				secondArrayAdapter.notifyDataSetChanged();
+				
+				for (int i = 0; i < enemyPlayers.size(); i++) {
+					DownloadInfo currentInfo = new DownloadInfo(enemyPlayers.get(i)
+							.getIGN(), 100, enemyPlayers.get(i).getAvatar());
+					currentInfo.setProgress((int) enemyPlayers.get(i).getHealth());
+					downloadInfo3.add(currentInfo);
+				}
+				enemyArrayAdapter.notifyDataSetChanged();
 			}else{
 
 
 				//Log.d("NOT", players.size()+"");
 				for (int i = 0; i < players.size(); i++) {
-					downloadInfo2.get(i).setProgress((int)players.get(i).getHealth());
-					
-					secondArrayAdapter.notifyDataSetChanged();
-					
+					downloadInfo2.get(i).setProgress((int)players.get(i).getHealth());					
+					secondArrayAdapter.notifyDataSetChanged();										
+				}
+				for (int i = 0; i < enemyPlayers.size(); i++) {
+					if(downloadInfo3.get(i).getProgress() == 0)
+					downloadInfo3.get(i).setProgress((int)enemyPlayers.get(i).getHealth());					
+				enemyArrayAdapter.notifyDataSetChanged();										
 				}
 			}
 			firstTime = false;
@@ -292,7 +323,10 @@ public class PlayingPage extends Activity {
 			blue_score=0;
 			for (int i = 0; i < AllPlayers.size(); i++) {
 				Log.d("HEALTH", ((int)AllPlayers.get(i).getHealth())+"");
-			
+				
+				if(myplayer.getHealth() == 0 || myplayer.getHealth() < 0)
+					imView.setImageResource(R.drawable.dead);
+				
 				if( AllPlayers.get(i).getTeam().equals("RED") && ((int)AllPlayers.get(i).getHealth())==0 ){
 					blue_score=blue_score+1;
 				}else if(AllPlayers.get(i).getTeam().equals("BLUE") && ((int)AllPlayers.get(i).getHealth())==0){
@@ -366,6 +400,25 @@ public class PlayingPage extends Activity {
 			if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
 
 				if (event.values[0] > lightAmount && myplayer.getHealth()>0) {
+					Intent intent = new Intent(getBaseContext(), BulletAnimation.class);
+					startActivity(intent);
+					
+					if(myplayer.getHealth() > 88 && myplayer.getHealth() < 100)
+						imView.setImageResource(R.drawable.face2);
+					else if(myplayer.getHealth() > 76)
+						imView.setImageResource(R.drawable.face3);
+					else if(myplayer.getHealth() > 64)
+						imView.setImageResource(R.drawable.face4);
+					else if(myplayer.getHealth() > 50)
+						imView.setImageResource(R.drawable.face5);
+					else if(myplayer.getHealth() > 40)
+						imView.setImageResource(R.drawable.face6);
+					else if(myplayer.getHealth() > 20)
+						imView.setImageResource(R.drawable.face7);
+					else if(myplayer.getHealth() < 20 && myplayer.getHealth() > 0)
+						imView.setImageResource(R.drawable.face8);				
+						
+					
 					
 					myplayer.setHealth(myplayer.getHealth() - subHealth);
 					if(!gunSound.isPlaying())
@@ -376,7 +429,7 @@ public class PlayingPage extends Activity {
 				}
 				else{
 					if(gunSound.isPlaying())
-						gunSound.pause();
+						gunSound.pause();					
 				}
 
 			}

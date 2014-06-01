@@ -66,9 +66,15 @@ public class Player {// implements ActionListener{
 	   public String getIGN() {
 	      return IGN;
 	   }
-
+	   
 	   public int getId() {
 	      return id;
+	   }
+	   public int getAvatar() {
+	      return avatarNum;
+	   }
+	   public void setAvatar(int ava) {
+	      avatarNum = ava;
 	   }
 	   public void setID(int id) {
 		      this.id =id;
@@ -99,6 +105,4 @@ public class Player {// implements ActionListener{
 	   public int getWinPercentage() {
 	      return (int) ((double) wins / (wins + loses)) * 100;
 	   }
-	   
-	   
 	}

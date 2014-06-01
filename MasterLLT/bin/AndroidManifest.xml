@@ -52,7 +52,7 @@
              android:screenOrientation="portrait"
              android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
 					android:label="Team Deathmatch"></activity>
-        <activity android:name="llt.locallasertag.game.TimerActivity"
+        <activity android:name="llt.locallasertag.nongame.TimerActivity"
              android:screenOrientation="portrait"
              android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"></activity>
         <activity android:name="llt.locallasertag.game.CreateGame"
@@ -64,8 +64,10 @@
              android:screenOrientation="portrait"
              android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
             		android:label="Room"></activity>
-        <activity android:name=".background.BulletAnimation"></activity>
-        <activity android:name=".game.BulletAnimation"></activity>
+        <activity android:name="llt.locallasertag.nongame.BulletAnimation"
+             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+               android:screenOrientation="portrait" ></activity>
+
              
     </application>
 

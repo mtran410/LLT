@@ -63,7 +63,7 @@ public class Setting extends Activity {
 
          temp = "http://www.jonquybao.com/LLT/feedurls/editplayer.php?username=" + name; //TODO change to edituser.php
          temp += "&IGN=" + params[1];
-         temp += "&avatar=" + Integer.parseInt(params[0]);
+         temp += "&avatar=" + (Integer.parseInt(params[0])+1);
          jObject = JSONfunctions.getJSONfromURL(temp);
          return "Executed";
       }

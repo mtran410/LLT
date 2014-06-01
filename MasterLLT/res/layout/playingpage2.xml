@@ -29,7 +29,7 @@
     <ImageView
         android:id="@+id/headStatus"
         android:layout_width="125dp"
-        android:layout_height="wrap_content"
+        android:layout_height="125dp"
         android:layout_below="@+id/Team"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
@@ -76,13 +76,13 @@
         android:id="@+id/redscore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/headStatus"
         android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/Score"
+        android:layout_toRightOf="@+id/Score"
         android:layout_toLeftOf="@+id/bluescore"
         android:background="#000000"
-        android:gravity="center"
         android:text="0"
+        android:gravity="center"
         android:textColor="#FF0000"
         android:textSize="28sp" />
 

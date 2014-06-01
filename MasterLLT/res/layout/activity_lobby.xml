@@ -11,10 +11,11 @@
         android:layout_above="@+id/btnCreateGame"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/searchbar"
-        android:layout_marginTop="14dp" >
+        android:layout_marginTop="14dp"
+        android:background="@drawable/lobbylist" >
 
     </ListView>
-
+    
     <Button
         android:id="@+id/btnCreateGame"
         android:layout_width="wrap_content"
@@ -23,7 +24,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:onClick="joinGame"
-        android:text="Create Game" />
+        android:text="Create Game"
+        android:background="@drawable/buttonshape"
+        android:minWidth="230dp"
+        android:shadowColor="#48ff00"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="5"
+        android:textColor="#000000"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/searchbar"

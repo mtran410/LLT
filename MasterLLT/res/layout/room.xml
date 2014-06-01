@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="237dp"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,7 +39,7 @@
             </ListView>
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/joinblue"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -49,8 +50,9 @@
 
        <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="237dp"
+        android:layout_height="0dp"
         android:orientation="vertical"
+        android:layout_weight="1"
 	>
 
         <LinearLayout
@@ -83,7 +85,7 @@
             </ListView>
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/joinred"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -95,23 +97,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:orientation="horizontal" >
-
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="50dip"
-   			android:layout_height="50dip"
-            android:background="@drawable/settings" 
-            android:layout_weight="1"/>
+        android:orientation="vertical"
+        android:gravity="bottom" >
 
         <Button
             android:id="@+id/start"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="START!"
+            android:layout_weight="4"
             android:onClick="StartGame"
-            android:layout_weight="4" />
+            android:text="START!" />
 
     </LinearLayout>
 

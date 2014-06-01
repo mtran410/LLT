@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class DownloadInfoArrayAdapter extends ArrayAdapter<DownloadInfo> {
+	private Context context;
   // Simple class to make it so that we don't have to call findViewById frequently
   private static class ViewHolder {
     TextView textView;
@@ -25,6 +26,7 @@ public class DownloadInfoArrayAdapter extends ArrayAdapter<DownloadInfo> {
     Button button;
     DownloadInfo info;
     ImageView pic;
+    
   }
   
   
@@ -33,6 +35,7 @@ public class DownloadInfoArrayAdapter extends ArrayAdapter<DownloadInfo> {
   public DownloadInfoArrayAdapter(Context context, int textViewResourceId,
       List<DownloadInfo> objects) {
     super(context, textViewResourceId, objects);
+    this.context = context;
   }
   
   @Override
@@ -68,35 +71,28 @@ public class DownloadInfoArrayAdapter extends ArrayAdapter<DownloadInfo> {
       holder.info = info;
       holder.info.setProgressBar(holder.progressBar);
     }
+    
+    String ava = "a" + info.getAvatar();
+    int resID = context.getResources().getIdentifier(ava , "drawable", context.getPackageName());
+    Drawable image = context.getResources().getDrawable(resID);
+    holder.pic.setImageDrawable(image);
+    
     holder.textView.setText(info.getFilename());
     holder.progressBar.setProgress(info.getProgress());    
     holder.progressBar.setMax(info.getFileSize());
     
     info.setProgressBar(holder.progressBar);
-    if(info.getProgress() > 88)
-   	 holder.pic.setImageResource(R.drawable.face1);
-    else if(info.getProgress() > 76)
-   	 holder.pic.setImageResource(R.drawable.face2);
-    else if(info.getProgress() > 64)
-   	 holder.pic.setImageResource(R.drawable.face3);
-    else if(info.getProgress() > 52)
-   	 holder.pic.setImageResource(R.drawable.face4);
-    else if(info.getProgress() > 40)
+    if(info.getProgress() > 40 && info.getProgress() < 50 )
     {
-   	 holder.pic.setImageResource(R.drawable.face5);
    	 holder.progressBar.setProgressDrawable(convertView.getResources().getDrawable(R.drawable.yellowprogressbar));
     }
-    else if(info.getProgress() > 28)
-   	 holder.pic.setImageResource(R.drawable.face7);
-    else if(info.getProgress() > 16)
+    else if(info.getProgress() > 17 && info.getProgress() < 20 )
     {
-   	 holder.pic.setImageResource(R.drawable.face7);
    	 holder.progressBar.setProgressDrawable(convertView.getResources().getDrawable(R.drawable.redprogressbar));
     }
-    else if(info.getProgress() > 0)
-   	 holder.pic.setImageResource(R.drawable.face8);
-    else 
-   	 holder.pic.setImageResource(R.drawable.dead);
+    else if(info.getProgress() == 0 || info.getProgress() < 0)
+   	 holder.pic.setImageResource(R.drawable.skull);
+
    // FileDownloadTask task = new FileDownloadTask(info);
     //task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     

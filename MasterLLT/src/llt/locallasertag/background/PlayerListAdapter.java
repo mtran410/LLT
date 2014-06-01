@@ -42,7 +42,7 @@ public class PlayerListAdapter extends BaseAdapter{
       {            
       	LayoutInflater vi = (LayoutInflater)_c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);            
       	v = vi.inflate(R.layout.player, null);          }             
-         ImageView image = (ImageView) v.findViewById(R.id.imageView1);            
+         ImageView image = (ImageView) v.findViewById(R.id.imbullet);            
          TextView fromView = (TextView)v.findViewById(R.id.textView1);                       
          PlayerList msg = _data.get(position);            
          image.setImageResource(msg.icon);            
