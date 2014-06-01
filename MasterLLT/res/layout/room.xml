@@ -38,7 +38,7 @@
             </ListView>
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/joinblue"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -83,7 +83,7 @@
             </ListView>
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/joinred"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
@@ -97,13 +97,6 @@
         android:layout_height="wrap_content"
         android:gravity="bottom"
         android:orientation="horizontal" >
-
-        <ImageButton
-            android:id="@+id/imageButton1"
-            android:layout_width="50dip"
-   			android:layout_height="50dip"
-            android:background="@drawable/settings" 
-            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/start"

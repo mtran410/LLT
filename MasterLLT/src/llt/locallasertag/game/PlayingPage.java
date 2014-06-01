@@ -115,8 +115,8 @@ public class PlayingPage extends Activity {
 		player_team =settings.getString("team", "n/a"); 
 		
 		if(player_team.equals("RED")){
-			RelativeLayout rl = (RelativeLayout) findViewById(R.id.teamPlayer);
-			rl.setBackgroundColor(Color.parseColor("#800000"));
+		//	RelativeLayout rl = (RelativeLayout) findViewById(R.id.teamPlayer);
+		//	rl.setBackgroundColor(Color.parseColor("#800000"));
 			TextView top = (TextView) findViewById(R.id.Player);
 			top.setBackgroundColor(Color.parseColor("#800000"));
 			TextView middle = (TextView) findViewById(R.id.Team);
