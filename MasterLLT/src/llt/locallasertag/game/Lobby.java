@@ -29,12 +29,17 @@ public class Lobby extends Activity {
    private ListView lv;
    private JSONObject jObject;
    ArrayAdapter<String> arrayAdapter;
+   private int SelectedPosition;
+   private SharedPreferences settings;
 
+   
    @Override
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_lobby);
 
+      settings = PreferenceManager.getDefaultSharedPreferences(this);
+      
       lv = (ListView) findViewById(R.id.gameList);
 
       // Instanciating an array list (you don't need to do this,
@@ -53,7 +58,7 @@ public class Lobby extends Activity {
       lv.setOnItemClickListener(new OnItemClickListener() {
 
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            joinGame(view);
+            joinGame(view, position);
          }
       });
 
@@ -77,8 +82,12 @@ public class Lobby extends Activity {
       return super.onOptionsItemSelected(item);
    }
 
-   public void joinGame(View v) {
+   public void joinGame(View v, int pos) {
+	   
+	  SelectedPosition=pos; 
+	  new JoinGame().execute("");
       Intent intent = new Intent(this, Room.class);
+      intent.putExtra("position", pos);
       startActivity(intent);
    }
 
@@ -122,5 +131,35 @@ public class Lobby extends Activity {
       protected void onProgressUpdate(Void... values) {
       }
    }
+   
+   private class JoinGame extends AsyncTask<String, Void, String> {
+
+	      @Override
+	      protected String doInBackground(String... params) {
+	    	
+	    	 int player_id = (int)settings.getInt("pid", 0); 
+	         jObject = JSONfunctions.getJSONfromURL("http://www.jonquybao.com/LLT/feedurls/join_game.php?pid="+player_id+"&gid="+SelectedPosition);
+	         return "Executed";
+	      }
+
+	      @Override
+	      protected void onPostExecute(String result) {
+	    
+	            Log.d("JSON", jObject.toString());
+	           
+	      }
+
+	      @Override
+	      protected void onPreExecute() {
+	      }
+
+	      @Override
+	      protected void onProgressUpdate(Void... values) {
+	      }
+	   }
+	   
+   
+   
 
 }
+
