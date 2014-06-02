@@ -68,7 +68,14 @@
         <activity android:name="llt.locallasertag.nongame.BulletAnimation"
              android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
                android:screenOrientation="portrait" ></activity>
-
+        <activity android:name="llt.locallasertag.nongame.RedWins"
+             android:screenOrientation="portrait"
+             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            		android:label="Room"></activity>
+                <activity android:name="llt.locallasertag.nongame.BlueWins"
+             android:screenOrientation="portrait"
+             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            		android:label="Room"></activity>
              
     </application>
 

@@ -12,8 +12,11 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -33,6 +36,10 @@ public class Lobby extends Activity {
    private JSONObject jObject;
    ArrayAdapter<String> arrayAdapter;
    private EditText sb;
+   private ArrayList<Integer> gameIds;
+   private Activity current_activity;
+   private int gid;
+	private  int player_id;
 
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +49,7 @@ public class Lobby extends Activity {
       lv = (ListView) findViewById(R.id.gameList);
       sb = (EditText) findViewById(R.id.searchbar);
       Button createGame = (Button) findViewById(R.id.btnCreateGame);
-
+      gameIds= new  ArrayList<Integer>();
       sb.addTextChangedListener(new TextWatcher() {
 
          @Override
@@ -59,6 +66,12 @@ public class Lobby extends Activity {
          }
       });
 
+      SharedPreferences settings=  PreferenceManager.getDefaultSharedPreferences(this);
+      player_id = (int)settings.getInt("pid", 0); 
+      gid= (int)settings.getInt("gid", 0); 
+      
+      
+      current_activity = this;
       // Instanciating an array list (you don't need to do this, you already have yours).
       List<String> your_array_list = new ArrayList<String>();
 
@@ -73,6 +86,15 @@ public class Lobby extends Activity {
 
       lv.setOnItemClickListener(new OnItemClickListener() {
          public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        	 
+        	 gid=gameIds.get(position);
+        	 SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(current_activity);
+             Editor edit = settings.edit();
+          
+             edit.putInt("gid", gameIds.get(position));
+             
+             edit.apply();
+         	 new JoinGame().execute("");
             joinGame(view);
          }
       });
@@ -106,22 +128,28 @@ public class Lobby extends Activity {
 
       @Override
       protected void onPostExecute(String result) {
-         try {
-            Log.d("JSON", jObject.toString());
-            JSONArray jArray;
+    	  try {
+	            Log.d("JSON", jObject.toString());
+	            JSONArray jArray;
 
-            jArray = jObject.getJSONArray("games");
+	            jArray = jObject.getJSONArray("games");
 
-            for (int i = 0; i < jArray.length(); i++) {
-               JSONObject object = jArray.getJSONObject(i);
-               if (object.has("name"))
-                  arrayAdapter.add(object.getString("name"));
-            }
-         } catch (JSONException e) {
-            e.printStackTrace();
-         }
-         arrayAdapter.notifyDataSetChanged();
-         System.out.println("onpostexecute");
+	            for (int i = 0; i < jArray.length(); i++) {
+	               JSONObject object = jArray.getJSONObject(i);
+	               if (object.has("name"))
+	                  arrayAdapter.add(object.getString("name"));
+	               
+	               if (object.has("gid")){
+	                   gameIds.add(Integer.parseInt(object.getString("gid")));
+	               }
+	            }
+	         } catch (JSONException e) {
+	            e.printStackTrace();
+	         }
+	         arrayAdapter.notifyDataSetChanged();
+	         System.out.println("onpostexecute");
+           
+        
       }
 
       @Override
@@ -132,4 +160,26 @@ public class Lobby extends Activity {
       protected void onProgressUpdate(Void... values) {
       }
    }
+   private class JoinGame extends AsyncTask<String, Void, String> {
+	      @Override
+	      protected String doInBackground(String... params) {
+	         jObject = JSONfunctions.getJSONfromURL("http://www.jonquybao.com/LLT/feedurls/join_game.php?gid="+gid+"&pid="+player_id);
+	         return "Executed";
+	      }
+
+	      @Override
+	      protected void onPostExecute(String result) {
+	        
+	            Log.d("JSON", jObject.toString());
+	            
+	      }
+
+	      @Override
+	      protected void onPreExecute() {
+	      }
+
+	      @Override
+	      protected void onProgressUpdate(Void... values) {
+	      }
+	   }
 }

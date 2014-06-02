@@ -10,19 +10,25 @@ import llt.locallasertag.R;
 import llt.locallasertag.nongame.HowToPlay;
 import llt.locallasertag.nongame.TimerActivity;
 import llt.locallasertag.util.JSONfunctions;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 public class Room extends Activity {
 	private ListView blueTeam;
 	private ListView redTeam;
@@ -34,7 +40,7 @@ public class Room extends Activity {
 	private  List<String> blueList;
 	private  List<String> redList;
 	private  int player_id;
-	private String team = "RED";
+	private String team = "BLUE";
 	private int creator_id;
 	private Boolean firstTime =true;
 	private Button start_button;
@@ -43,6 +49,9 @@ public class Room extends Activity {
 	private Boolean started=false;
 	private Intent intent;
 	 private Handler handler = new Handler();
+	 private int gid;
+	
+	 
    protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.room);
@@ -55,34 +64,50 @@ public class Room extends Activity {
       current_activity=this;
       SharedPreferences settings=  PreferenceManager.getDefaultSharedPreferences(this);
        player_id = (int)settings.getInt("pid", 0); 
+       gid= (int)settings.getInt("gid", 0); 
       blueTeam = (ListView) findViewById(R.id.blueTeam);
       redTeam = (ListView) findViewById(R.id.redTeam);
       blueList = new ArrayList<String>();
-      blueList.add("Blue Slot 1");
-      blueList.add("Blue Slot 2");
-      blueList.add("Blue Slot 3");
-      blueList.add("Blue Slot 4");
+      blueList.add("");
+      blueList.add("");
+      blueList.add("");
+      blueList.add("");
       redList = new ArrayList<String>();
-      redList.add("RED Slot 1");
-      redList.add("RED Slot 2");
-      redList.add("RED Slot 3");
-      redList.add("RED Slot 4");
+      redList.add("");
+      redList.add("");
+      redList.add("");
+      redList.add("");
       blueArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, blueList);
       blueTeam.setAdapter(blueArrayAdapter);
       redArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, redList);
       redTeam.setAdapter(redArrayAdapter);
       // TODO link players to the list for red and blue team
       start_button = (Button) findViewById(R.id.start);  
-      Button blueButton = (Button) findViewById(R.id.joinblue);  
+      Button blueButton = (Button) findViewById(R.id.joinblue); 
+      
+
+      Editor edit = settings.edit();
+      edit.apply();
+      edit.putString("team", team);
       blueButton.setOnClickListener(new OnClickListener() {
           public void onClick(View v) {
             team="BLUE";
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(current_activity);
+            Editor edit = settings.edit();
+         
+            edit.putString("team", team);
+            edit.apply();
            }
         });
       Button redButton = (Button) findViewById(R.id.joinred);  
       redButton.setOnClickListener(new OnClickListener() {
           public void onClick(View v) {
               team="RED";
+              SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(current_activity);
+              Editor edit = settings.edit();
+           
+              edit.putString("team", team);
+              edit.apply();
              }
           });
       intent = new Intent(current_activity, TimerActivity.class);
@@ -142,7 +167,7 @@ protected void onStart() {
    private class LongOperation extends AsyncTask<String, Void, String> {
 	      @Override
 	      protected String doInBackground(String... params) {
-	         jObject = JSONfunctions.getJSONfromURL("http://www.jonquybao.com/LLT/feedurls/room_service.php?gid=1&pid="+player_id+"&team="+team+"&start="+start_game);
+	         jObject = JSONfunctions.getJSONfromURL("http://www.jonquybao.com/LLT/feedurls/room_service.php?gid="+gid+"&pid="+player_id+"&team="+team+"&start="+start_game);
 	         return "Executed";
 	      }
 	      @Override
@@ -187,10 +212,10 @@ protected void onStart() {
 	      }
 	      private void reset(){
 	    	  for( int i =0; i<blueList.size(); i++){
-	    		  blueList.set(i, "Blue Slot "+(i+1));
+	    		  blueList.set(i, "");
 	    	  }
 	    	  for(int j =0; j<redList.size(); j++){
-	    		  redList.set(j, "Red Slot "+(j+1));
+	    		  redList.set(j, "");
 	    	  }
 	      }
 	      @Override

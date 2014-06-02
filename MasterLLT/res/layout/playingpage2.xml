@@ -9,22 +9,12 @@
     <ListView
         android:id="@+id/downloadListView"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="66dp"
         android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         android:cacheColorHint="@android:color/transparent"
         android:focusable="false" >
     </ListView>
-
-    <TextView
-        android:id="@+id/Team"
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/downloadListView"
-        android:gravity="center"
-        android:text="Game Status"
-        android:textColor="#FFFFFF"
-        android:textSize="30sp" />
 
     <ImageView
         android:id="@+id/headStatus"
@@ -43,10 +33,10 @@
         android:layout_height="300dp"
         android:layout_alignBottom="@+id/enemyTeam"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/Team"
+        android:layout_alignRight="@+id/headStatus"
+        android:layout_below="@+id/yourteam"
         android:background="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"
-        android:layout_toLeftOf="@+id/headStatus" >
+        android:cacheColorHint="@android:color/transparent" >
 
     </ListView>
 
@@ -55,22 +45,12 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_above="@+id/bluescore"
+        android:layout_below="@+id/yourteam"
+        android:layout_toRightOf="@+id/headStatus"
         android:background="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent"
-        android:layout_alignTop="@+id/headStatus"
-        android:layout_toRightOf="@+id/headStatus" >
+        android:cacheColorHint="@android:color/transparent" >
 
     </ListView>
-
-    <TextView
-        android:id="@+id/Death"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Deaths"
-        android:textColor="#FFFFFF"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/redscore"
@@ -113,14 +93,32 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/yourDeaths"
+        android:id="@+id/enemyteam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Death"
+        android:layout_above="@+id/enemyTeam"
+        android:layout_alignParentRight="true"
+        android:text="ENEMY TEAM"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/Team"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/downloadListView"
         android:layout_centerHorizontal="true"
-        android:text="0"
-        android:textColor="#FFFF00"
-        android:textSize="30sp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:gravity="center"
+        android:text="Current Status"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/yourteam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headStatus"
+        android:layout_toLeftOf="@+id/headStatus"
+        android:text="YOUR TEAM"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
