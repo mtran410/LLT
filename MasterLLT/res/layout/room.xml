@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+                android:background="@drawable/title_bg_blue">
 
             <TextView
                 android:id="@+id/textView1"
@@ -22,7 +23,8 @@
                 android:layout_height="wrap_content"
                 android:text="BLUE"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#0147FA" />
+                android:textColor="#FFFFFF" />
+           
         </LinearLayout>
 
         <LinearLayout
@@ -35,7 +37,13 @@
                 android:id="@+id/blueTeam"
                 android:layout_width="308dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+               android:background="@drawable/rounded_corners"
+                   android:textColor="#000080"
+                    android:divider="#FFFFFF"
+    android:dividerHeight="4px">
+                
+
             </ListView>
 
             <Button
@@ -59,7 +67,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical" 
+             android:background="@drawable/tittle_bg_red"
+           
+         >
 
             <TextView
                 android:id="@+id/textView1"
@@ -67,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:text="RED"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#ff0000" />
+                 android:textColor="#FFFFFF"/>
         </LinearLayout>
 
         <LinearLayout
@@ -81,7 +92,12 @@
                 android:id="@+id/redTeam"
                 android:layout_width="308dp"
                 android:layout_height="fill_parent"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+                android:background="@drawable/round_corners2"
+                   android:textColor="#800000"
+                    android:divider="#FFFFFF"
+                       android:dividerHeight="4px"
+        >
             </ListView>
 
             <Button

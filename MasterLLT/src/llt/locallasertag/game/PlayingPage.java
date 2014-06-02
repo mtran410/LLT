@@ -74,6 +74,7 @@ public class PlayingPage extends Activity {
 	String player_team;
 	ImageView imView;
 	int red_score=0, blue_score=0, backgroundColor;
+	 private int gid;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -124,9 +125,11 @@ public class PlayingPage extends Activity {
 		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 		player_id = (int)settings.getInt("pid", 0); 
 		player_team =settings.getString("team", "n/a"); 
+		gid= (int)settings.getInt("gid", 0); 
 		
 		imView = (ImageView) findViewById(R.id.headStatus);
 
+		Log.d("TEAM!!!", player_team);
 		RelativeLayout rl = (RelativeLayout) findViewById(R.id.txtscreen);
 		if(player_team.equals("RED")){
 			 rl.setBackgroundColor(Color.parseColor("#800000"));
@@ -199,10 +202,10 @@ public class PlayingPage extends Activity {
 			//temp = "http://www.jonquybao.com/LLT/feedurls/all_players.php?pid=1&health=100";
 
 			if (firstTime) {
-				temp = "http://www.jonquybao.com/LLT/feedurls/all_players.php?pid="+player_id+"&health=100";
+				temp = "http://www.jonquybao.com/LLT/feedurls/all_players.php?gid="+gid+"&pid="+player_id+"&health=100";
 				
 			} else
-				temp = "http://www.jonquybao.com/LLT/feedurls/all_players.php?pid="+player_id+"&health="+ myplayer.getHealth();
+				temp = "http://www.jonquybao.com/LLT/feedurls/all_players.php?gid="+gid+"&pid="+player_id+"&health="+ myplayer.getHealth();
 			// +Integer.parseInt((playerHealth.get(0)*100)+"")
 
 		//	Log.d("LOOK", temp);
@@ -249,11 +252,13 @@ public class PlayingPage extends Activity {
 						p.setAvatar(Integer.parseInt(object.getString("avatar")));
 					}
 
+					
+				
 					if (firstTime) {
 						AllPlayers.add(p);
 						
 						if (object.getString("username").equals(getUsername())) {
-							Log.d("EPIC", object.getString("username"));
+							//Log.d("EPIC", object.getString("username"));
 							myplayer.setID(p.getId());
 							myplayer.setIGN(p.getIGN());
 							myplayer.setAvatar(p.getAvatar());
@@ -269,7 +274,10 @@ public class PlayingPage extends Activity {
 					} else {
 						AllPlayers.get(i).setHealth(p.getHealth());
 						if (!object.getString("username").equals(getUsername()) && i < players.size() ) {
-							players.get(getIndexofPID(p.getId())).setHealth(p.getHealth());
+							if( player_team.equals(object.getString("team")))
+								players.get(getIndexofPID(p.getId())).setHealth(p.getHealth());
+							else
+								enemyPlayers.get(getIndexofenemyID(p.getId())).setHealth(p.getHealth());
 						}
 					}
 
@@ -280,7 +288,7 @@ public class PlayingPage extends Activity {
 			}
 		
 			if(firstTime){
-				Log.d("NAME", "NAME");
+				//.d("NAME", "NAME");
 				downloadInfo.get(0).setFilename(myplayer.getIGN());
 				downloadInfo.get(0).setAvatar(myplayer.getAvatar());
 				firstArrayAdapter.notifyDataSetChanged();
@@ -312,9 +320,9 @@ public class PlayingPage extends Activity {
 					secondArrayAdapter.notifyDataSetChanged();										
 				}
 				for (int i = 0; i < enemyPlayers.size(); i++) {
-					if(downloadInfo3.get(i).getProgress() == 0)
+					//if(downloadInfo3.get(i).getProgress() == 0)
 					downloadInfo3.get(i).setProgress((int)enemyPlayers.get(i).getHealth());					
-				enemyArrayAdapter.notifyDataSetChanged();										
+					enemyArrayAdapter.notifyDataSetChanged();										
 				}
 			}
 			firstTime = false;
@@ -326,7 +334,7 @@ public class PlayingPage extends Activity {
 			red_score=0;
 			blue_score=0;
 			for (int i = 0; i < AllPlayers.size(); i++) {
-				Log.d("HEALTH", ((int)AllPlayers.get(i).getHealth())+"");
+			//	Log.d("HEALTH", ((int)AllPlayers.get(i).getHealth())+"");
 				
 				if(myplayer.getHealth() == 0 || myplayer.getHealth() < 0)
 					imView.setImageResource(R.drawable.dead);
@@ -337,7 +345,7 @@ public class PlayingPage extends Activity {
 					red_score= red_score+1;
 				}
 			}
-			Log.d("------", "---");
+		///	Log.d("------", "---");
 			TextView red = (TextView) findViewById(R.id.redscore);
 			red.setText(red_score+"");
 			TextView blue = (TextView) findViewById(R.id.bluescore);
@@ -348,6 +356,16 @@ public class PlayingPage extends Activity {
 			int val=0;
 				for(int i =0; i<players.size(); i++){
 					if(players.get(i).getId()==pid){
+						val =i;
+					}
+				}
+			
+			return val;
+		}
+		private int getIndexofenemyID(int pid){
+			int val=0;
+				for(int i =0; i<enemyPlayers.size(); i++){
+					if(enemyPlayers.get(i).getId()==pid){
 						val =i;
 					}
 				}
