@@ -136,13 +136,13 @@ public class PlayingPage extends Activity {
 		RelativeLayout rl = (RelativeLayout) findViewById(R.id.txtscreen);
 		if(player_team.equals("RED")){
 			 rl.setBackgroundColor(Color.parseColor("#800000"));
-			 enemyT.setTextColor(Color.parseColor("#0000FF"));
-			 yourT.setTextColor(Color.parseColor("#FF0000"));
+			 enemyT.setTextColor(Color.parseColor("#ADD8E6"));
+			 yourT.setTextColor(Color.parseColor("#FFC0C0"));
 		}
 		else	
 			 rl.setBackgroundColor(Color.parseColor("#1a2a5a"));
-		 yourT.setTextColor(Color.parseColor("#0000FF"));
-		 enemyT.setTextColor(Color.parseColor("#FF0000"));
+		 yourT.setTextColor(Color.parseColor("#ADD8E6"));
+		 enemyT.setTextColor(Color.parseColor("#FFC0C0"));
 		/*
 		 * 
 		 * for(int i = 0; i < 1; ++i) { downloadInfo.add(currentInfo); }
@@ -334,7 +334,54 @@ public class PlayingPage extends Activity {
 			}
 			firstTime = false;
 			updateScore();
+			/////////////////win condition
+			/*
+			boolean endGame = true;
 			
+			for (int i = 0; i < players.size(); i++) //when your whole team is dead
+			{			
+				if(downloadInfo2.get(i).getProgress() != 0 || downloadInfo.get(0).getProgress() != 0)
+				{
+					endGame = false;
+					break;
+				}
+			}
+			if(endGame)
+			{
+				if(player_team.equals("RED"))
+				{
+					Intent intent = new Intent(getBaseContext(), BlueWins.class);
+					startActivity(intent);
+				}
+				else
+				{
+					Intent intent = new Intent(getBaseContext(), RedWins.class);
+					startActivity(intent);
+				}
+			}
+			
+			endGame = true;
+			for (int i = 0; i < enemyPlayers.size(); i++) //when whole enemy team is dead
+			{
+				if(downloadInfo3.get(i).getProgress() !=0)
+				{
+					endGame = false;
+					break;
+				}
+			}
+			if(endGame)
+			{
+				if(player_team.equals("RED"))
+				{
+					Intent intent = new Intent(getBaseContext(), RedWins.class);
+					startActivity(intent);
+				}
+				else
+				{
+					Intent intent = new Intent(getBaseContext(), BlueWins.class);
+					startActivity(intent);
+				}
+			}*/
 
 		}
 		private void updateScore(){
