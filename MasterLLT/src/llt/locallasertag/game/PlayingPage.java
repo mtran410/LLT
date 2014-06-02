@@ -22,6 +22,7 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -36,6 +37,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ImageView;
@@ -52,13 +54,14 @@ public class PlayingPage extends Activity {
 	private TextView playerText, teamText, scoreText;
 	public MediaPlayer gunSound;//play sound
 	private JSONObject jObject;
-	Timer timer;
-	MyTimerTask myTimerTask;
+	private Timer timer;
+	private MyTimerTask myTimerTask;
 	boolean firstTime = true;
-	DownloadInfo currentInfo;
-	List<DownloadInfo> downloadInfo;
-	List<DownloadInfo> downloadInfo2;
-	List<DownloadInfo> downloadInfo3;
+	private DownloadInfo currentInfo;
+	private List<DownloadInfo> downloadInfo;
+	private List<DownloadInfo> downloadInfo2;
+	private List<DownloadInfo> downloadInfo3;
+	Vibrator V;
 	DownloadInfoArrayAdapter firstArrayAdapter;
 	DownloadInfoArrayAdapter secondArrayAdapter;
 	DownloadInfoArrayAdapter enemyArrayAdapter;
@@ -77,6 +80,7 @@ public class PlayingPage extends Activity {
 		
 		setContentView(R.layout.playingpage2);
 		//screen = (RelativeLayout)findViewById(R.id.txtscreen);
+		V=(Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 		gunSound = MediaPlayer.create(this, R.raw.gunshot);//to play sound countdown
 		gunSound.setLooping(true);
 		
@@ -402,7 +406,7 @@ public class PlayingPage extends Activity {
 				if (event.values[0] > lightAmount && myplayer.getHealth()>0) {
 					Intent intent = new Intent(getBaseContext(), BulletAnimation.class);
 					startActivity(intent);
-					
+					V.vibrate(2000);
 					if(myplayer.getHealth() > 88 && myplayer.getHealth() < 100)
 						imView.setImageResource(R.drawable.face2);
 					else if(myplayer.getHealth() > 76)
